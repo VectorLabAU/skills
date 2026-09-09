@@ -1,0 +1,37 @@
+{
+  "name": "vectorlab-ux-skills",
+  "version": "0.1.0",
+  "description": "VectorLab UI/UX, microcopy, and visual taste skills: low-friction, high-taste interfaces for any frontend stack.",
+  "author": {
+    "name": "VectorLab",
+    "url": "https://vectorlab.com.au"
+  },
+  "homepage": "https://vectorlab.com.au",
+  "repository": "https://github.com/VectorLabAU/skills",
+  "license": "MIT",
+  "keywords": [
+    "ux",
+    "ui",
+    "microcopy",
+    "taste",
+    "accessibility",
+    "forms",
+    "skills"
+  ],
+  "skills": [
+    "./skills/setup/setup-ui-ux-skills",
+    "./skills/visual-taste/layout-geometry-and-grids",
+    "./skills/visual-taste/typography-and-hierarchy",
+    "./skills/visual-taste/restrained-color-and-depth",
+    "./skills/visual-taste/anti-ai-slop",
+    "./skills/interaction-friction/surface-routing-and-dialogs",
+    "./skills/interaction-friction/form-mechanics-and-validation",
+    "./skills/interaction-friction/keyboard-and-focus-parity",
+    "./skills/interaction-friction/smart-defaults-and-inference",
+    "./skills/microcopy-voice/verb-first-actions",
+    "./skills/microcopy-voice/blameless-system-recovery",
+    "./skills/microcopy-voice/label-and-placeholder-discipline",
+    "./skills/state-feedback/latency-masking-and-loaders",
+    "./skills/state-feedback/empty-states-and-activation"
+  ]
+}

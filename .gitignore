@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+.scratch/
+*.log
+.idea/
+.vscode/
+.cursor/
