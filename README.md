@@ -104,7 +104,3 @@ Before finishing UI work, check:
 3. Destructive actions have explicit confirmation (entity named, destructive verb)?
 4. Copy verb-first and free of user blame?
 5. Validation fires on blur and clears on focus/edit?
-
-## Spec
-
-See [brief.md](./brief.md) for the full architecture and generation specification.
