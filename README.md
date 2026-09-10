@@ -1,7 +1,5 @@
 # VectorLab UI/UX Skills
 
-[![skills.sh](https://skills.sh/b/VectorLabAU/skills)](https://skills.sh/VectorLabAU/skills)
-
 Binary, testable skills for AI coding agents. They push low-friction, high-taste interfaces — layout, interaction, microcopy, feedback, and motion — across any frontend stack.
 
 Content is framework-agnostic: CSS primitives, DOM state, and visual geometry — not React-, Vue-, or Svelte-specific APIs.
