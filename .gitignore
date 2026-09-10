@@ -6,3 +6,7 @@ node_modules/
 .vscode/
 .cursor/
 brief.md
+
+# Local eval apps — do not ship with the catalog
+examples/greenfield/
+examples/brownfield/

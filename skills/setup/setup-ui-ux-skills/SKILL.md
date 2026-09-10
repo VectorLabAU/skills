@@ -1,6 +1,6 @@
 ---
 name: setup-ui-ux-skills
-description: "Configure this repo for VectorLab UI/UX skills: aesthetic reference, banned anti-patterns, accessibility target, and microcopy voice. Run once before first use of the other UX skills."
+description: "Configure this repo for VectorLab UI/UX skills: aesthetic reference, banned anti-patterns, accessibility target, microcopy voice, and icon library. Run once before first use of the other UX skills."
 title: UI/UX & Taste System Setup Wizard
 category: setup
 severity: hard-rule
@@ -15,10 +15,11 @@ Scaffold the per-project profile that the UI/UX skills assume:
 - **Banned anti-aesthetics** — glassmorphism, rainbow CTAs, cartoon empties, and related slop
 - **Accessibility target** — WCAG 2.1 AA or AAA
 - **Brand tone** — Utilitarian, Warm Humancentric, or Opinionated Direct
+- **Icon library** — detect an existing set, or help the user pick one
 
 This is a prompt-driven skill, not a deterministic script. Explore, present what you found, confirm with the user, then write.
 
-See [taste-archetypes.md](./reference/taste-archetypes.md) and [anti-patterns.md](./reference/anti-patterns.md) when explaining options.
+See [taste-archetypes.md](./reference/taste-archetypes.md), [anti-patterns.md](./reference/anti-patterns.md), and [icon-libraries.md](./reference/icon-libraries.md) when explaining options.
 
 ## Process
 
@@ -30,10 +31,11 @@ Look at the current repo. Read whatever exists; don't assume:
 - `AGENTS.md` and `CLAUDE.md` at the repo root — does either exist? Is there already a `## UI/UX skills` section?
 - Design tokens, brand docs, `DESIGN.md`, `docs/brand/`, theme CSS variables
 - Existing UI libraries or design-system folders
+- **Icon library signals** — `package.json` / lockfile deps (`lucide*`, `@heroicons/*`, `@phosphor-icons/*`, `@tabler/icons*`, `@radix-ui/react-icons`, `remixicon`, `@iconify/*`), source imports, `icons/` folders, or SVG sprites (see [icon-libraries.md](./reference/icon-libraries.md))
 
 ### 2. Present findings and ask
 
-Summarise what's present and what's missing. Then take the four sections in order. One section, one answer, then the next.
+Summarise what's present and what's missing. Then take the sections in order. One section, one answer, then the next.
 
 Lead each section with the recommended answer so the user can accept it in a word.
 
@@ -73,6 +75,15 @@ Prompt: "Confirm this ban list or add/remove specific patterns."
 2. **Warm & Humancentric** — Clear, empathetic, supportive (Notion / Slack)
 3. **Opinionated & Direct** — Punchy, editorial, concise (Basecamp)
 
+**Section E: Icon library**
+
+Depends on explore findings:
+
+- **If a library (or project SVG set) was found:** state the name and package/path in findings. Confirm it with the user. Write it into `.ux-profile.md`. Do **not** offer a replacement shopping list.
+- **If none was found:** offer the list from [icon-libraries.md](./reference/icon-libraries.md), lead with **Lucide**. User picks one library, **project SVG / inline only**, or defer. Record the choice only — do **not** install packages during setup.
+
+Remind: one library for product UI; no mixing sets; no emoji as UI icons.
+
 ### 3. Confirm and edit
 
 Show a draft of:
@@ -99,13 +110,13 @@ The block:
 ```markdown
 ## UI/UX skills
 
-Taste, a11y, bans, and voice for this project live in `.ux-profile.md`.
+Taste, a11y, bans, voice, and icon library for this project live in `.ux-profile.md`.
 Run `setup-ui-ux-skills` again only to change those defaults.
-Before UI or microcopy work, read `.ux-profile.md`, then the matching domain skill (forms, dialogs, loaders, empty states, copy).
+Before UI or microcopy work, read `.ux-profile.md`, then the matching domain skill (forms, surfaces, loaders, empty-states, copy, motion).
 ```
 
 Then write `.ux-profile.md` at the project root using the template and the user's answers.
 
 ### 5. Done
 
-Tell the user setup is complete. Summarise the active aesthetic, a11y level, voice, and ban list. Mention they can edit `.ux-profile.md` directly later; re-running this skill is only needed to restart the interview or switch standards.
+Tell the user setup is complete. Summarise the active aesthetic, a11y level, voice, icon library, and ban list. Mention they can edit `.ux-profile.md` directly later; re-running this skill is only needed to restart the interview or switch standards.

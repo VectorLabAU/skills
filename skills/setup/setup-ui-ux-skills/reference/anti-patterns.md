@@ -1,6 +1,6 @@
 # Default anti-aesthetic ban list
 
-Confirm or edit this list during `setup-ui-ux-skills`. Downstream skills (especially `anti-ai-slop`) treat confirmed items as hard bans.
+Confirm or edit this list during `setup-ui-ux-skills`. Downstream skills (especially `anti-slop`) treat confirmed items as hard bans.
 
 ## Visual clutter
 
