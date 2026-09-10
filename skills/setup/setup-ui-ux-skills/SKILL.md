@@ -29,6 +29,7 @@ Look at the current repo. Read whatever exists; don't assume:
 
 - `.ux-profile.md` at the repo root (prior setup output)
 - `AGENTS.md` and `CLAUDE.md` at the repo root — does either exist? Is there already a `## UI/UX skills` section?
+- **Skill install root** — detect in order: `.skills/`, `.agents/skills/` (or `.agents/` if `SKILL.md` files live there), `.cursor/skills/`, `.claude/skills/`. Reuse the first existing tree; if none, prefer `.skills/` (never a top-level `skills/` folder). Note the chosen root in findings and the Done summary.
 - Design tokens, brand docs, `DESIGN.md`, `docs/brand/`, theme CSS variables
 - Existing UI libraries or design-system folders
 - **Icon library signals** — `package.json` / lockfile deps (`lucide*`, `@heroicons/*`, `@phosphor-icons/*`, `@tabler/icons*`, `@radix-ui/react-icons`, `remixicon`, `@iconify/*`), source imports, `icons/` folders, or SVG sprites (see [icon-libraries.md](./reference/icon-libraries.md))
@@ -113,10 +114,11 @@ The block:
 Taste, a11y, bans, voice, and icon library for this project live in `.ux-profile.md`.
 Run `setup-ui-ux-skills` again only to change those defaults.
 Before UI or microcopy work, read `.ux-profile.md`, then the matching domain skill (forms, surfaces, loaders, empty-states, copy, motion).
+Before finishing UI, run `ux-audit`.
 ```
 
 Then write `.ux-profile.md` at the project root using the template and the user's answers.
 
 ### 5. Done
 
-Tell the user setup is complete. Summarise the active aesthetic, a11y level, voice, icon library, and ban list. Mention they can edit `.ux-profile.md` directly later; re-running this skill is only needed to restart the interview or switch standards.
+Tell the user setup is complete. Summarise the active aesthetic, a11y level, voice, icon library, ban list, and the skill install root detected in Explore. Mention they can edit `.ux-profile.md` directly later; re-running this skill is only needed to restart the interview or switch standards. Remind them to run `ux-audit` before finishing UI work.

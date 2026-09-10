@@ -21,6 +21,7 @@
   ],
   "skills": [
     "./skills/setup/setup-ui-ux-skills",
+    "./skills/audit/ux-audit",
     "./skills/visual-taste/spacing",
     "./skills/visual-taste/typography",
     "./skills/visual-taste/colour-palette",

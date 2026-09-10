@@ -4,7 +4,7 @@
 
 Binary, testable skills for AI coding agents. They push low-friction, high-taste interfaces — layout, interaction, microcopy, feedback, and motion — across any frontend stack.
 
-Modeled after the packaging and setup flow of [mattpocock/skills](https://github.com/mattpocock/skills). Content is framework-agnostic: CSS primitives, DOM state, and visual geometry — not React-, Vue-, or Svelte-specific APIs.
+Content is framework-agnostic: CSS primitives, DOM state, and visual geometry — not React-, Vue-, or Svelte-specific APIs.
 
 ## Installation (30-second setup)
 
@@ -25,7 +25,9 @@ Or from a local clone of this folder:
 npx skills@latest add ./path/to/UX-Skills
 ```
 
-Pick the skills you want, and which coding agents to install them on. **Make sure `setup-ui-ux-skills` is one of them.**
+Pick the skills you want, and which coding agents to install them on. **Make sure `setup-ui-ux-skills` and `ux-audit` are among them.**
+
+**Install root:** skills land in a hidden `.skills/` folder unless the project already has `.skills/`, `.agents/skills/`, `.cursor/skills/`, or `.claude/skills/` — reuse that tree. Never install into a top-level `skills/` folder. Do not create a second skill tree next to an existing one.
 
 </details>
 
@@ -55,7 +57,7 @@ It writes `.ux-profile.md` at the project root and adds a short pointer in `CLAU
 
 ### 3. Build UI
 
-Other skills load when the task fits (forms, surfaces, empty states, loaders, copy, motion). Each one reads `.ux-profile.md` first when that file exists.
+Other skills load when the task fits (forms, surfaces, empty states, loaders, copy, motion). Each one reads `.ux-profile.md` first when that file exists. Before finishing UI, run `ux-audit`.
 
 ## Skills
 
@@ -67,15 +69,23 @@ Reachable only when you ask for them (`disable-model-invocation: true`).
 | --- | --- |
 | [setup-ui-ux-skills](./skills/setup/setup-ui-ux-skills/SKILL.md) | Configure taste, bans, a11y, voice, and icons. Run once per project. |
 
+### User or model invoked
+
+Agents load these before finishing UI, or when you ask by name.
+
+| Skill | Purpose |
+| --- | --- |
+| [ux-audit](./skills/audit/ux-audit/SKILL.md) | Pre-flight taste audit against every installed domain skill. |
+
 ### Model-invoked
 
 Rich descriptions so the agent can reach for them when the task fits.
 
-**Visual taste**
+**Foundations**
 
-- [spacing](./skills/visual-taste/spacing/SKILL.md) — 4/8pt rhythm, optical alignment, line length
 - [typography](./skills/visual-taste/typography/SKILL.md) — weights, scale steps, line-height
 - [colour-palette](./skills/visual-taste/colour-palette/SKILL.md) — 60-30-10, borders before shadows
+- [spacing](./skills/visual-taste/spacing/SKILL.md) — 4/8pt rhythm, optical alignment, line length
 - [anti-slop](./skills/visual-taste/anti-slop/SKILL.md) — bans glassmorphism, rainbow CTAs, cartoon empties
 
 **Interaction**
@@ -104,12 +114,4 @@ Rich descriptions so the agent can reach for them when the task fits.
 
 ## Pre-flight taste audit
 
-Before finishing UI work, check:
-
-1. Anything on the banned anti-aesthetic list?
-2. Modal where a slide-over or inline edit was required (&lt;10s rule)?
-3. Single-field rename in a reserved box (next row does not move)?
-4. Destructive actions have explicit confirmation (entity named, destructive verb)?
-5. Copy verb-first and free of user blame?
-6. Validation fires on blur and clears on focus/edit?
-7. Motion uses only transform/opacity tokens, and reduced-motion is honored?
+Before finishing UI work, run [`ux-audit`](./skills/audit/ux-audit/SKILL.md). It scores the working set against the hard gate and every installed domain skill, fixes hard-rule fails, then reports.

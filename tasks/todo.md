@@ -2,7 +2,7 @@
 
 Mirror of [tests/TEST-PLAN.md](../tests/TEST-PLAN.md). Check items as you run them. Example apps live under `examples/` and are **gitignored**.
 
-**Catalog target:** 17 skills (1 setup + 16 domain).
+**Catalog target:** 18 skills (1 setup + 1 audit + 16 domain). Re-run Phase 0–1 after `ux-audit` lands.
 
 ## Scaffold / harness
 
@@ -16,20 +16,20 @@ Mirror of [tests/TEST-PLAN.md](../tests/TEST-PLAN.md). Check items as you run th
 
 ## Phase 0 — Catalog integrity
 
-- [x] 0.1 Seventeen skill folders with `SKILL.md`
-- [x] 0.2 Folder name matches frontmatter `name`
-- [x] 0.3 Every skill has `name` + `description` (WHEN, &lt;1024)
-- [x] 0.4 Only setup has `disable-model-invocation: true`
-- [x] 0.5 Setup `agents/openai.yaml` has `allow_implicit_invocation: false`
-- [x] 0.6 All reference files exist and are linked (incl. `icon-libraries.md`, animation refs)
-- [x] 0.7 Plugin lists 17 paths; marketplace source `./`
+- [ ] 0.1 Eighteen skill folders with `SKILL.md`
+- [ ] 0.2 Folder name matches frontmatter `name`
+- [ ] 0.3 Every skill has `name` + `description` (WHEN, &lt;1024)
+- [ ] 0.4 Only setup has `disable-model-invocation: true`
+- [ ] 0.5 Setup `agents/openai.yaml` has `allow_implicit_invocation: false`
+- [ ] 0.6 All reference files exist and are linked (incl. `icon-libraries.md`, animation refs)
+- [ ] 0.7 Plugin lists 18 paths (incl. `ux-audit`); marketplace source `./`
 
 ## Phase 1 — Installation
 
-- [x] 1A Local `npx skills@latest add` from this clone (17 skills)
-- [x] 1B GitHub `VectorLabAU/skills` (optional / release) — skipped this run (local 1A primary)
-- [x] 1C Claude marketplace (optional) — n/a
-- [x] 1D Dual-install negative documented (do not score on dual)
+- [ ] 1A Local `npx skills@latest add` from this clone (18 skills; empty scratch → `.skills/`; existing `.agents/skills/` → reuse, no second tree)
+- [ ] 1B GitHub `VectorLabAU/skills` (optional / release)
+- [ ] 1C Claude marketplace (optional)
+- [ ] 1D Dual-install negative documented (do not score on dual)
 
 ## Phase 2 — Setup configuration
 
@@ -50,7 +50,7 @@ Mirror of [tests/TEST-PLAN.md](../tests/TEST-PLAN.md). Check items as you run th
 
 - [x] Install + setup with known profile
 - [x] Prompt A: build Projects workspace (skills not named; includes reduced-motion-aware overlay motion)
-- [x] Prompt B: pre-flight taste audit
+- [ ] Prompt B: run `ux-audit`
 - [x] Evidence: profile + domain skills read
 - [x] Browser verification of flows
 - [x] Phase 5 scorecard filled (≥15/16; hard stops clear)
@@ -68,7 +68,7 @@ Mirror of [tests/TEST-PLAN.md](../tests/TEST-PLAN.md). Check items as you run th
 
 - [x] Greenfield domain table complete (16 rows)
 - [x] Brownfield domain table complete (16 rows)
-- [x] Pre-flight audit both runs (incl. motion / reduced-motion)
+- [ ] Pre-flight audit both runs via `ux-audit` (incl. motion / reduced-motion)
 - [x] Hard stop check: anti-slop + destructive confirm
 
 ## Phase 6 — Negatives
@@ -80,12 +80,13 @@ Mirror of [tests/TEST-PLAN.md](../tests/TEST-PLAN.md). Check items as you run th
 
 ## Release bar
 
-- [x] Phase 0 all pass
-- [x] Phase 1A pass
-- [x] Phase 2 defaults + file-pick matrix pass
-- [x] Greenfield ≥15/16
-- [x] Brownfield ≥15/16
-- [x] No hard-stop fails
+- [ ] Phase 0 all pass (18 skills incl. `ux-audit`)
+- [ ] Phase 1A pass (`.skills/` default / reuse existing root)
+- [ ] Phase 2 defaults + file-pick matrix pass
+- [ ] Greenfield ≥15/16
+- [ ] Brownfield ≥15/16
+- [ ] No hard-stop fails
+- [ ] Prompt B / finishing UI runs `ux-audit`
 
 ## Review
 
@@ -101,13 +102,25 @@ _After a full eval run, note date, agent, scores, and remaining defects here._
 
 ### Current catalog (17 skills / 16 domain) — 2026-09-10
 
+Kept for history. Re-run against the **18-skill** catalog (setup + `ux-audit` + 16 domain) before shipping.
+
 - Date: 2026-09-10
 - Agent: Cursor (Composer)
 - Install path: 1A local (nested git scratch; CLI walks git root)
 - Greenfield domain: **16 / 16**
 - Brownfield domain: **16 / 16**
-- Ship? **yes**
+- Ship? **yes** (for then-current 17-skill catalog)
 - Notes: Ran in `.scratch/` only. Fixtures under `examples/` unchanged. Apps at `.scratch/greenfield` and `.scratch/brownfield`.
+
+### Pending catalog (18 skills / 1 audit + 16 domain)
+
+- Date:
+- Agent:
+- Install path: empty → `.skills/`; existing → reuse `.agents/skills/` etc.
+- Greenfield domain: __ / 16
+- Brownfield domain: __ / 16
+- Ship?
+- Notes:
 
 ### Phase 0–2
 
