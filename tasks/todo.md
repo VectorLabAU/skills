@@ -2,7 +2,25 @@
 
 Mirror of [tests/TEST-PLAN.md](../tests/TEST-PLAN.md). Check items as you run them. Example apps live under `examples/` and are **gitignored**.
 
-**Catalog target:** 18 skills (1 setup + 1 audit + 16 domain). Re-run Phase 0–1 after `ux-audit` lands.
+**Catalog target:** 19 skills (1 setup + 1 audit + 17 domain). Re-run Phase 0–1 after `page-patterns` lands.
+
+## Page patterns skill (2026-09-11)
+
+- [x] Study shadcnstudio-blocks screenshots (app pages vs chrome vs marketing sections)
+- [x] Keep the ten locked product patterns; auth → Form; marketing → composed sections
+- [x] Add `skills/interaction/page-patterns` (decision tree + catalog + marketing refs)
+- [x] Hard rule: name the pattern before any page markup
+- [x] Wire into setup pointer, profile template, `surfaces`, `ux-audit` hard gate
+- [x] Register in plugin.json + README
+- [x] Update TEST-PLAN counts (19 / 17 domain) and Phase 6.6
+
+### Review
+
+Screenshot folders informed the catalog. Product pages map to the ten patterns. Shells, widgets, dialogs, and empty blocks are not pages. Public marketing is a route type plus stacked sections — not an eleventh product pattern. Auth is Form (auth). Images were not copied into this repo (copyright + size).
+
+---
+
+## Eval tracker
 
 ## Scaffold / harness
 
@@ -16,17 +34,17 @@ Mirror of [tests/TEST-PLAN.md](../tests/TEST-PLAN.md). Check items as you run th
 
 ## Phase 0 — Catalog integrity
 
-- [ ] 0.1 Eighteen skill folders with `SKILL.md`
+- [ ] 0.1 Nineteen skill folders with `SKILL.md`
 - [ ] 0.2 Folder name matches frontmatter `name`
 - [ ] 0.3 Every skill has `name` + `description` (WHEN, &lt;1024)
 - [ ] 0.4 Only setup has `disable-model-invocation: true`
 - [ ] 0.5 Setup `agents/openai.yaml` has `allow_implicit_invocation: false`
-- [ ] 0.6 All reference files exist and are linked (incl. `icon-libraries.md`, animation refs)
+- [ ] 0.6 All reference files exist and are linked (incl. `icon-libraries.md`, animation refs, page-patterns refs)
 - [ ] 0.7 Plugin lists 18 paths (incl. `ux-audit`); marketplace source `./`
 
 ## Phase 1 — Installation
 
-- [ ] 1A Local `npx skills@latest add` from this clone (18 skills; empty scratch → `.skills/`; existing `.agents/skills/` → reuse, no second tree)
+- [ ] 1A Local `npx skills@latest add` from this clone (19 skills; empty scratch → `.skills/`; existing `.agents/skills/` → reuse, no second tree)
 - [ ] 1B GitHub `VectorLabAU/skills` (optional / release)
 - [ ] 1C Claude marketplace (optional)
 - [ ] 1D Dual-install negative documented (do not score on dual)
@@ -53,7 +71,7 @@ Mirror of [tests/TEST-PLAN.md](../tests/TEST-PLAN.md). Check items as you run th
 - [ ] Prompt B: run `ux-audit`
 - [x] Evidence: profile + domain skills read
 - [x] Browser verification of flows
-- [x] Phase 5 scorecard filled (≥15/16; hard stops clear)
+- [x] Phase 5 scorecard filled (≥16/17; hard stops clear)
 
 ## Phase 4 — Brownfield
 
@@ -62,7 +80,7 @@ Mirror of [tests/TEST-PLAN.md](../tests/TEST-PLAN.md). Check items as you run th
 - [x] All planted defects gone (map in TEST-PLAN; includes motion/transitions/reduced-motion)
 - [x] No new banned patterns
 - [x] Browser verification
-- [x] Phase 5 scorecard filled (≥15/16; hard stops clear)
+- [x] Phase 5 scorecard filled (≥16/17; hard stops clear)
 
 ## Phase 5 — Scorecards
 
@@ -80,11 +98,11 @@ Mirror of [tests/TEST-PLAN.md](../tests/TEST-PLAN.md). Check items as you run th
 
 ## Release bar
 
-- [ ] Phase 0 all pass (18 skills incl. `ux-audit`)
+- [ ] Phase 0 all pass (19 skills incl. `page-patterns`)
 - [ ] Phase 1A pass (`.skills/` default / reuse existing root)
 - [ ] Phase 2 defaults + file-pick matrix pass
-- [ ] Greenfield ≥15/16
-- [ ] Brownfield ≥15/16
+- [ ] Greenfield ≥16/17
+- [ ] Brownfield ≥16/17
 - [ ] No hard-stop fails
 - [ ] Prompt B / finishing UI runs `ux-audit`
 
@@ -112,13 +130,13 @@ Kept for history. Re-run against the **18-skill** catalog (setup + `ux-audit` + 
 - Ship? **yes** (for then-current 17-skill catalog)
 - Notes: Ran in `.scratch/` only. Fixtures under `examples/` unchanged. Apps at `.scratch/greenfield` and `.scratch/brownfield`.
 
-### Pending catalog (18 skills / 1 audit + 16 domain)
+### Pending catalog (19 skills / 1 audit + 17 domain)
 
 - Date:
 - Agent:
 - Install path: empty → `.skills/`; existing → reuse `.agents/skills/` etc.
-- Greenfield domain: __ / 16
-- Brownfield domain: __ / 16
+- Greenfield domain: __ / 17
+- Brownfield domain: __ / 17
 - Ship?
 - Notes:
 
@@ -148,6 +166,7 @@ Kept for history. Re-run against the **18-skill** catalog (setup + `ux-audit` + 
 | typography | pass | pass | weights ≤600; min 12px; heading/body LH |
 | colour-palette | pass | pass | neutrals; border-first; soft shadow |
 | anti-slop | pass | pass | no rainbow/glass/cartoon/deco input icons/pastel pills |
+| page-patterns | — | — | added 2026-09-11; re-score next eval |
 | surfaces | pass | pass | slide-over create/edit; settings page; named delete; Cancel focused; Esc |
 | forms | pass | pass | blur/submit validation; submit clickable; no First+Last |
 | keyboard | pass | pass | `:focus-visible` ring; trap; restore |

@@ -113,7 +113,8 @@ The block:
 
 Taste, a11y, bans, voice, and icon library for this project live in `.ux-profile.md`.
 Run `setup-ui-ux-skills` again only to change those defaults.
-Before UI or microcopy work, read `.ux-profile.md`, then the matching domain skill (forms, surfaces, loaders, empty-states, copy, motion).
+Before UI or microcopy work, read `.ux-profile.md`, then the matching domain skill (page-patterns, forms, surfaces, loaders, empty-states, copy, motion).
+Before creating a new page, read `page-patterns` and name the pattern. Do not write page markup until the pattern is named.
 Before finishing UI, run `ux-audit`.
 ```
 
@@ -121,4 +122,4 @@ Then write `.ux-profile.md` at the project root using the template and the user'
 
 ### 5. Done
 
-Tell the user setup is complete. Summarise the active aesthetic, a11y level, voice, icon library, ban list, and the skill install root detected in Explore. Mention they can edit `.ux-profile.md` directly later; re-running this skill is only needed to restart the interview or switch standards. Remind them to run `ux-audit` before finishing UI work.
+Tell the user setup is complete. Summarise the active aesthetic, a11y level, voice, icon library, ban list, and the skill install root detected in Explore. Mention they can edit `.ux-profile.md` directly later; re-running this skill is only needed to restart the interview or switch standards. Remind them to name a `page-patterns` pattern before building any new page, and to run `ux-audit` before finishing UI work.

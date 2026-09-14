@@ -10,6 +10,8 @@ references:
 
 If `.ux-profile.md` exists at the project root, read it before changing surfaces, forms, or focus behavior.
 
+If the chosen surface is a **page / route**, read `page-patterns` and name the pattern before writing page markup.
+
 ### Intent
 
 Users lose context when the wrong surface type interrupts their flow. Quick edits stay in place; longer work gets a dedicated route; destructive actions never fire without explicit, named confirmation. This skill routes tasks to the lightest surface that still supports the work.
@@ -91,6 +93,7 @@ Route-based flows update `history.pushState` or framework router; slide-overs us
 
 - [ ] Read `.ux-profile.md` if present.
 - [ ] Classify task duration and step count; pick inline, slide-over, or route — never stacked modals.
+- [ ] If the surface is a page / route, name a `page-patterns` pattern before writing markup.
 - [ ] Single-field work is inline — not a drawer, modal, or new page.
 - [ ] Measure a neighbor's `top`/`left` before and after entering edit; values must match.
 - [ ] Confirm all destructive actions use named-entity confirmation per reference spec.
