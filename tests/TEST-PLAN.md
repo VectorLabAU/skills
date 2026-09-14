@@ -9,11 +9,12 @@ Soft taste/heuristics are notes only. Hard rules from each `SKILL.md` are pass/f
 | Item | Location | Git |
 | --- | --- | --- |
 | This protocol | `tests/TEST-PLAN.md` | Tracked |
+| Product build contract | `tests/WORKSPACE-SPEC.md` | Tracked |
 | Run tracker | `tasks/todo.md` | Tracked |
 | Greenfield app | `examples/greenfield/` | **Gitignored** |
 | Brownfield app | `examples/brownfield/` | **Gitignored** |
 
-Regenerate the example apps from [Recreation specs](#recreation-specs) if the folders are missing.
+Regenerate the example apps from [`tests/WORKSPACE-SPEC.md`](WORKSPACE-SPEC.md) if the folders are missing.
 
 **Stack:** vanilla HTML/CSS/JS (framework-agnostic). Serve with any static server, e.g. `npx serve .` from the example folder.
 
@@ -25,27 +26,22 @@ Regenerate the example apps from [Recreation specs](#recreation-specs) if the fo
 flowchart TD
   catalog[Catalog integrity] --> install[Install paths]
   install --> setup[setup-ui-ux-skills]
-  setup --> green[Greenfield build]
-  setup --> brown[Brownfield repair]
+  setup --> green[Harbor greenfield build]
+  setup --> brown[Harbor brownfield repair]
   green --> score[Per-skill scorecard]
   brown --> score
 ```
 
 ## Shared product under test
 
-Both apps target one **Projects workspace**:
+Both apps target **Harbor** — a multi-route projects workspace that forces every domain skill, including all ten page patterns. Full contract: [`WORKSPACE-SPEC.md`](WORKSPACE-SPEC.md).
 
-- List of projects (empty, populated, filtered-zero)
-- Create/edit project form (name, timezone select, notes)
-- Inline rename (single field, reserved box, 0 layout shift)
-- Quick edit in a slide-over (&lt;10s)
-- Settings as a dedicated page (multi-step / ≥10s)
-- Delete with confirmation
-- Save that can be slow (loader bands) or fail (error copy)
-- Full keyboard path through overlays
-- Short overlay enter/exit that respects reduced motion
+Summary:
 
-Greenfield starts blank. Brownfield ships planted anti-patterns so repair is measurable.
+- Eleven HTML routes: login (auth form), dashboard, projects list, project wizard, project detail, tasks board, calendar (events), inbox, messages (split pane), reports (analytics), settings
+- Different record types so List / Board / Calendar stay separate pages (not one page with three toggles of the same records)
+- Inline rename, slide-overs, named delete confirms, loaders, empty states, motion
+- Greenfield starts blank. Brownfield ships planted anti-patterns and pattern fails so repair is measurable.
 
 ---
 
@@ -157,6 +153,8 @@ Before finishing UI, run `ux-audit`.
 | 2H | Re-run setup | Updates in place; still one `## UI/UX skills` |
 | 2I | Repo already has an icon library | Profile records it; **no** shopping list offered |
 | 2J | No icon library in repo | Agent offers the list from `icon-libraries.md` (Lucide first) |
+| 2K | User says “Vercel” or “Material” for aesthetic | Collapse map: Vercel → **Linear**; Material → **Custom** (inherit tokens / note system name). Profile **Standard** is only a peer name (Linear, Stripe, Apple Native, Raycast, Notion, Custom) — never invents “Vercel” or “Material” as the standard |
+| 2L | User picks **Notion** | Profile Standard is Notion; valid Section A option alongside Linear / Stripe / Apple Native / Raycast / Custom |
 
 ### Pass artifacts
 
@@ -164,8 +162,9 @@ Before finishing UI, run `ux-audit`.
 - Includes **Icon library** section filled (no leftover `{{PLACEHOLDER}}` tokens)
 - Pointer block matches exact copy above
 - Setup does **not** auto-run on a random UI prompt (user-invoked only)
+- Aesthetic **Standard** is one of: Linear, Stripe, Apple Native, Raycast, Notion, Custom
 
-**Release:** 2F + file-pick matrix (2A–2D) pass. Prefer full matrix including 2I/2J.
+**Release:** 2F + file-pick matrix (2A–2D) pass. Prefer full matrix including 2I/2J/2K.
 
 ---
 
@@ -173,27 +172,42 @@ Before finishing UI, run `ux-audit`.
 
 **Prep**
 
-1. Copy or use `examples/greenfield/`
+1. Copy or use `examples/greenfield/` (shell from [`WORKSPACE-SPEC.md` §9](WORKSPACE-SPEC.md))
 2. Install skills (Phase 1A)
 3. Run setup with **known** profile: Stripe / default bans / WCAG 2.1 AA / Utilitarian & Minimal / Lucide (or recorded icons)
 
-### Prompt A — build (do not name skills)
+### Prompt A — build (do not name skills or patterns)
+
+Use the job-only prompt from [`WORKSPACE-SPEC.md` §9](WORKSPACE-SPEC.md). It requires all eleven Harbor routes, overlays, and localStorage — without leaking page-pattern names.
 
 ```text
-Build a Projects workspace in this folder (vanilla HTML/CSS/JS is fine).
+Build Harbor in this folder (vanilla HTML/CSS/JS is fine). Follow tests/WORKSPACE-SPEC.md.
 
-Include:
-- A project list that supports empty, populated, and filtered-zero states
-- Create/edit project form: name, timezone select, notes
-- Inline rename for a single field (same reserved box; next row must not move)
-- Quick edit in a slide-over for short tasks
-- A dedicated settings page/route for longer multi-step settings
-- Delete with confirmation
-- Saves that can be fast, slow (>1s), or fail with an error
-- Full keyboard access through overlays
-- Short overlay enter/exit motion that respects prefers-reduced-motion
+Pages and jobs (name the right page pattern yourself before each page’s markup — do not invent an eleventh product pattern):
 
-Use this project's UI/UX profile and skills. Do not skip setup artifacts if they exist.
+- login.html — sign in (centered card, no app sidebar)
+- index.html — glance at workspace status, then leave to a module
+- projects.html — scan and manage many projects (empty, populated, filtered-zero)
+- project-new.html — multi-step create for a new project
+- project.html?id= — inspect one project with sections
+- tasks.html — move tasks through stages (todo / doing / done); optional list view of the same tasks
+- calendar.html — work by date with events (separate from tasks)
+- inbox.html — work a time-ordered notification queue
+- messages.html — triage message threads without leaving the page
+- reports.html — change date range and filters, read charts, export
+- settings.html — configure the workspace (not a project record)
+
+Also include:
+- App chrome (sidebar + header) on signed-in pages only
+- Inline rename for a project name on the list (same reserved box; next row must not move)
+- Slide-overs for quick-add project, quick edit project, task card, and create-event from an empty calendar cell
+- Delete with named confirmation (project, task, event)
+- Saves that can be fast, slow (>1s with skeletons), or fail with a blameless error + Copy error details
+- Full keyboard access through overlays; board stage change without relying on drag alone; messages list arrows + Enter
+- Short overlay enter/exit that respects prefers-reduced-motion
+- localStorage data model from the Harbor spec; start empty so zero-states appear
+
+Use this project’s UI/UX profile and skills. Do not skip setup artifacts if they exist.
 ```
 
 ### Prompt B — audit
@@ -212,15 +226,17 @@ Finish the UI. Run `ux-audit`.
 
 ## Phase 4 — Brownfield usage
 
-**Prep:** use `examples/brownfield/` (planted defects). Install skills + run setup (same known profile as greenfield) in a scratch copy so you can diff against the fixture.
+**Prep:** use `examples/brownfield/` (planted defects per [`WORKSPACE-SPEC.md` §10](WORKSPACE-SPEC.md)). Install skills + run setup (same known profile as greenfield) in a scratch copy so you can diff against the fixture.
 
 ### Prompt
 
 ```text
-Fix this Projects workspace to match our UI/UX skills. Do not rewrite the product — keep the same features and flows. Repair layout, type, colour, slop, page patterns, surfaces, forms, keyboard, defaults, copy, loaders, empty states, and motion.
+Fix this Harbor workspace to match our UI/UX skills and tests/WORKSPACE-SPEC.md. Do not rewrite the product — keep the same features, routes, and flows. Repair layout, type, colour, slop, page patterns, surfaces, forms, keyboard, defaults, copy, loaders, empty states, and motion.
 ```
 
 ### Planted defects (must be gone after repair)
+
+Full maps live in [`WORKSPACE-SPEC.md` §10](WORKSPACE-SPEC.md). Summary:
 
 | Skill | Planted defect |
 | --- | --- |
@@ -228,7 +244,7 @@ Fix this Projects workspace to match our UI/UX skills. Do not rewrite the produc
 | typography | Weights 400–800; 11px cells; inverted line-heights |
 | colour-palette | Saturated canvas; shadow alpha 0.25; rainbow CTA |
 | anti-slop | Glass blur; cartoon empty; decorative input icons; pastel pills |
-| page-patterns | Settings and list mashed onto one scrolling “home” (KPI strip + table + preference toggles); no named pattern |
+| page-patterns | See pattern-plant table below |
 | surfaces | Stacked modals; “Are you sure?” / OK; rename swaps in a taller input (or Save/Cancel wrap) so the next row jumps |
 | forms | Validate-while-typing; disabled Submit; First+Last; placeholder-as-label |
 | keyboard | `outline: none`; no focus trap; no restore |
@@ -241,6 +257,21 @@ Fix this Projects workspace to match our UI/UX skills. Do not rewrite the produc
 | motion | Bounce/elastic; animate height; 800ms decorative fade |
 | transitions | Overlay open jumps layout; long stagger |
 | reduced-motion | Ignore `prefers-reduced-motion`; meaning only via motion |
+
+#### Pattern plants (`page-patterns`)
+
+| Pattern | Planted defect |
+| --- | --- |
+| Home mash-up | `index.html` mixes KPI strip + projects table + preference toggles |
+| Board vs views | Tasks split across three URLs instead of one Board page with List toggle |
+| Detail | Long field dump; no tabs |
+| Form (auth) | Login keeps the app sidebar |
+| Calendar | Empty state replaces the grid |
+| Split Pane | Left pane is a DataTable; row click navigates away |
+| Analytics | No date range; Export on Projects list toolbar |
+| Inbox | Table headers/sort; unread colour-only |
+| Settings | Edits project record fields; one card per control |
+| Board | Hides empty stages; drag is the only move path |
 
 ### Pass if
 
@@ -262,7 +293,7 @@ Score each row `pass` / `fail` / `n/a`. Any hard-rule miss → `fail`. Run once 
 | typography | ≤3 weights, none &gt;600; no text &lt;12px; heading LH 1.1–1.25; body 1.5–1.6 |
 | colour-palette | 60-30-10; 1px border before shadow; light shadow alpha &lt;0.08 |
 | anti-slop | No rainbow CTA, unbounded glass, cartoon people, decorative input icons, metadata pills |
-| page-patterns | Transcript names a locked pattern (or marketing route type) **before** page markup; list / settings / form pages match that anatomy; no invented eleventh product pattern |
+| page-patterns | Transcript names a locked pattern **before** each Harbor page’s markup (greenfield) or after repair (brownfield); reviewer can name all ten patterns from layout alone; anatomies match `WORKSPACE-SPEC.md` §6; no invented eleventh product pattern |
 | surfaces | &lt;10s slide-over; ≥10s route; no stacked modals; named-entity delete; Cancel focused; Esc dismisses; **single-field inline edit with 0 layout shift** (neighbor `top`/`left` unchanged; no drawer/modal for one field) |
 | forms | Blur-first; clear on focus/keystroke; submit always clickable; no redundant fields |
 | keyboard | Full Tab path; visible focus ring; overlay trap + restore |
@@ -291,16 +322,22 @@ After scoring domain skills, confirm Prompt B ran `ux-audit` and the hard gate p
 
 ### Browser verification (required)
 
-Start a static server and exercise as a user:
+Start a static server and exercise as a user. Full script: [`WORKSPACE-SPEC.md` §11](WORKSPACE-SPEC.md).
 
+Minimum path:
+
+- Login → dashboard → projects list
 - Create project; blur validation; always-clickable submit
-- Inline rename: click the name; the next row’s `getBoundingClientRect().top` must match before and after (no grow, no wrap, no new button row, no drawer)
-- Slide-over quick edit; settings page for long flow
-- Tab through overlays; Esc; focus restore
-- Delete with Cancel default focus
-- Fast save (no flicker loader); slow list (skeleton); failed save (blameless + copy details)
+- Inline rename: next row’s `getBoundingClientRect().top` matches before and after
+- Slide-over quick edit; wizard at `project-new.html`; detail tabs
+- Board: keyboard/menu stage move; empty columns visible
+- Calendar: empty cell create with date filled; grid stays
+- Inbox approve / mark read; messages arrow select (no navigate-away)
+- Reports: change range; Export in header; slow skeleton
+- Settings danger zone; named delete with Cancel focused
+- Fast save (no flicker); slow list (skeleton); failed save (blameless + copy details)
 - Empty state CTA; filtered empty → Clear all filters
-- Overlay open/close without layout jump; with OS reduced-motion (or emulated), overlays do not slide/bounce
+- Overlay open/close without layout jump; with reduced-motion emulated, overlays do not slide/bounce
 
 A screenshot alone is **not** verification.
 
@@ -399,7 +436,18 @@ Copy per run.
 
 ## Recreation specs
 
-`examples/greenfield/` and `examples/brownfield/` are **gitignored**. Recreate them anytime with the specs below (or re-run scaffolding from this protocol).
+`examples/greenfield/` and `examples/brownfield/` are **gitignored**. Recreate them anytime from the product build contract:
+
+**→ [`tests/WORKSPACE-SPEC.md`](WORKSPACE-SPEC.md)**
+
+| Section | Contents |
+| --- | --- |
+| §2 | Stack, serve, scratch rules |
+| §3–§7 | Routes, data, chrome, anatomies, overlays |
+| §8 | Cross-cutting skill checklist |
+| §9 | Greenfield shell + Prompt A / B |
+| §10 | Brownfield files + skill and pattern defect maps |
+| §11 | Browser verify script |
 
 ### Common serve instructions
 
@@ -409,67 +457,7 @@ npx --yes serve .
 # open the printed local URL
 ```
 
-### Greenfield (`examples/greenfield/`)
-
-**Purpose:** empty starter. Agent builds the Projects workspace from prompts in Phase 3.
-
-**Files**
-
-1. `README.md` — how to serve; note that product UI is intentionally empty; run `setup-ui-ux-skills` before building.
-2. `index.html` — minimal shell only:
-   - `<title>Projects workspace (greenfield)</title>`
-   - Heading “Projects”
-   - Short note: “No UI yet. Run setup-ui-ux-skills, then ask the agent to build the workspace.”
-   - Link to this test plan path for humans: `../../tests/TEST-PLAN.md` (relative from examples)
-3. Optional empty `styles.css` / `app.js` stubs if useful — no product features.
-
-**Must not include:** forms, modals, loaders, project list logic, or styled “finished” UI.
-
-### Brownfield (`examples/brownfield/`)
-
-**Purpose:** working Projects workspace that **intentionally fails** every domain hard rule so repair scoring is binary.
-
-**Files (minimum)**
-
-- `README.md` — serve instructions; warn that UI is deliberately broken for eval
-- `index.html` — structure + defect comments (`<!-- DEFECT: skill-name — … -->`)
-- `styles.css` — visual defects
-- `app.js` — interaction defects (validation, modals, loaders, empty states, motion)
-
-**Feature surface (all present, but wrong)**
-
-- Project list with empty / filtered modes
-- Create form: First name + Last name, timezone blank by default, placeholder-as-label email field, disabled Submit until “valid”
-- Inline rename that swaps a text label for a taller padded input (or adds Save/Cancel under the field) so the next row jumps
-- Stacked modals for “quick edit” then nested confirm
-- Delete: “Are you sure?” + OK
-- Instant save shows spinner; slow list shows full-page spinner
-- Empty: “Nothing here” without CTA; filtered empty without Clear filters
-- Error toast: user-blame email copy; technical error dumps `500 INTERNAL_SERVER_ERROR`
-- Buttons labeled OK / Submit / Proceed
-- `outline: none` globally; overlays do not trap or restore focus
-- No draft persistence; timezone starts unselected
-- Bounce/elastic motion; height animation; long stagger; no `prefers-reduced-motion` path; success meaning via bounce alone
-
-**CSS defects to plant**
-
-- Gaps: 13px, 19px, 22px
-- Prose / description max-width ~120ch or none
-- Icons vertically centered to box, not cap-height
-- Font weights including 700 and 800; table/meta text 11px
-- Heading `line-height: 1.6`, body `line-height: 1.3`
-- Saturated blue/purple canvas; `box-shadow: 0 8px 24px rgba(0,0,0,0.25)`
-- Rainbow multi-stop gradient on primary CTA
-- Glass panel with `backdrop-filter: blur(...)` without strong border
-- Pastel pill badges on static metadata
-- Decorative emoji/icon inside text inputs
-- Bounce/elastic keyframes; `transition: height`; no reduced-motion media query
-
-**Annotate every planted defect** with the skill id in an HTML/CSS/JS comment so scorers can map repairs.
-
-### Defect → skill map (brownfield)
-
-Use the Phase 4 table as the checklist when rebuilding the fixture from scratch.
+When rebuilding brownfield from scratch, use the Phase 4 tables and `WORKSPACE-SPEC.md` §10 as the checklist. Annotate every plant with `<!-- DEFECT: skill-or-pattern — … -->`.
 
 ---
 
@@ -478,6 +466,6 @@ Use the Phase 4 table as the checklist when rebuilding the fixture from scratch.
 - Publishing the catalog
 - CI that drives an LLM
 - React/Svelte ports of the examples
-- Scoring against Marketing / Operations product apps (reuse scorecard later if desired)
+- Marketing route types (Harbor uses product patterns only)
 - Committing the example app trees
 - Running this eval until explicitly approved after catalog changes land

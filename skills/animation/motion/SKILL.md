@@ -8,7 +8,7 @@ references:
   - reference/timing-tokens.md
 ---
 
-If `.ux-profile.md` exists at the project root, read it before adding motion — especially aesthetic reference (Linear ≈ instant, Stripe restrained, Apple short and purposeful).
+If `.ux-profile.md` exists at the project root, read it before adding motion — especially aesthetic reference (Linear ≈ instant, Stripe/Notion restrained, Apple short and purposeful).
 
 ### Intent
 
@@ -23,7 +23,7 @@ Motion should clarify change, not decorate. Short, consistent durations and rest
 
 ### Design Heuristics & Taste Principles
 
-- Match aesthetic density: Linear → prefer 100–150ms or none; Stripe → 150–200ms; Apple Native → up to 300ms when purposeful.
+- Match aesthetic density: Linear → prefer 100–150ms or none; Stripe / Notion → 150–200ms; Apple Native → up to 300ms when purposeful.
 - Prefer opacity fades for state changes; use small translates (4–8px) for enter from edge, not large slides across the viewport.
 - One motion language per surface family — do not mix bounce buttons with linear drawers.
 - Prefer CSS transitions / `@keyframes` over JS animation libraries unless the stack already depends on one.

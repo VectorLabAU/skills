@@ -1,8 +1,36 @@
 # UX Skills eval — todo tracker
 
-Mirror of [tests/TEST-PLAN.md](../tests/TEST-PLAN.md). Check items as you run them. Example apps live under `examples/` and are **gitignored**.
+Mirror of [tests/TEST-PLAN.md](../tests/TEST-PLAN.md). Product build contract: [tests/WORKSPACE-SPEC.md](../tests/WORKSPACE-SPEC.md). Check items as you run them. Example apps live under `examples/` and are **gitignored**.
 
 **Catalog target:** 19 skills (1 setup + 1 audit + 17 domain). Re-run Phase 0–1 after `page-patterns` lands.
+
+## Notion taste profile (2026-09-14)
+
+- [x] Add Notion first-class profile + collapse map to `taste-archetypes.md`
+- [x] Wire Section A in setup `SKILL.md` (Notion = 5, Custom = 6)
+- [x] Template enum, motion timings, type-scale mapping
+- [x] README, brief.md, TEST-PLAN (2K/2L)
+
+### Review
+
+Profiles stay product vibes. Notion is the only new peer. Famous lookalikes and design systems collapse via the agent-only map — not extra Section A options.
+
+---
+
+## Harbor fixture spec (2026-09-14)
+
+- [x] Write `tests/WORKSPACE-SPEC.md` (IA, data, 10 patterns + auth, overlays, skill contracts, prompts, brownfield plants, browser script)
+- [x] Point `tests/TEST-PLAN.md` Phase 3/4/5, recreation specs, and browser verification at Harbor
+- [ ] Rebuild `examples/greenfield/` from `WORKSPACE-SPEC.md` §9 (empty shell only)
+- [ ] Rebuild `examples/brownfield/` from `WORKSPACE-SPEC.md` §10 (all routes + skill + pattern plants)
+- [ ] Re-score `page-patterns` on next greenfield + brownfield eval (was `—` / not scored)
+- [ ] Full Harbor browser verify script (`WORKSPACE-SPEC.md` §11) on both apps
+
+### Review
+
+Harbor expands the eval product so every domain skill is applicable, including all ten page patterns via separate record types (projects list, tasks board, calendar events, etc.). Spec is tracked; example app trees stay gitignored until rebuilt for a run.
+
+---
 
 ## Page patterns skill (2026-09-11)
 
@@ -26,9 +54,11 @@ Screenshot folders informed the catalog. Product pages map to the ten patterns. 
 
 - [x] Append `examples/greenfield/` and `examples/brownfield/` to `.gitignore`
 - [x] Write `tests/TEST-PLAN.md`
+- [x] Write `tests/WORKSPACE-SPEC.md` (Harbor product contract)
 - [x] Write this tracker
-- [x] Scaffold / refresh `examples/greenfield/`
-- [x] Scaffold / refresh `examples/brownfield/` (defect ids = short skill names + animation defects)
+- [x] Scaffold / refresh `examples/greenfield/` *(pre-Harbor thin shell — rebuild from WORKSPACE-SPEC)*
+- [x] Scaffold / refresh `examples/brownfield/` *(pre-Harbor — rebuild from WORKSPACE-SPEC)*
+- [ ] Rebuild both example apps from Harbor `WORKSPACE-SPEC.md`
 - [x] `git check-ignore -v examples/greenfield examples/brownfield` matches
 - [x] `git status` does not list either example app
 
@@ -61,33 +91,35 @@ Screenshot folders informed the catalog. Product pages map to the ten patterns. 
 - [x] 2H Re-run updates in place
 - [x] 2I Existing icon library → recorded, no shopping list
 - [x] 2J No icon library → offers list from `icon-libraries.md`
+- [ ] 2K Collapse map (Vercel → Linear; Material → Custom; never invent standard names)
+- [ ] 2L Notion as valid Section A pick
 - [x] Artifacts: filled `.ux-profile.md` (incl. Icon library) + exact pointer block
 - [x] Setup not auto-invoked on random UI prompt
 
 ## Phase 3 — Greenfield
 
-- [x] Install + setup with known profile
-- [x] Prompt A: build Projects workspace (skills not named; includes reduced-motion-aware overlay motion)
+- [ ] Install + setup with known profile *(Harbor / WORKSPACE-SPEC)*
+- [ ] Prompt A: build Harbor from jobs (all 11 routes; skills/patterns not named)
 - [ ] Prompt B: run `ux-audit`
-- [x] Evidence: profile + domain skills read
-- [x] Browser verification of flows
-- [x] Phase 5 scorecard filled (≥16/17; hard stops clear)
+- [ ] Evidence: profile + domain skills read; pattern names before each page’s markup
+- [ ] Browser verification (`WORKSPACE-SPEC.md` §11)
+- [ ] Phase 5 scorecard filled (≥16/17; hard stops clear; `page-patterns` scored)
 
 ## Phase 4 — Brownfield
 
-- [x] Scratch copy of brownfield + install + setup
-- [x] Repair prompt (do not rewrite product)
-- [x] All planted defects gone (map in TEST-PLAN; includes motion/transitions/reduced-motion)
-- [x] No new banned patterns
-- [x] Browser verification
-- [x] Phase 5 scorecard filled (≥16/17; hard stops clear)
+- [ ] Scratch copy of Harbor brownfield + install + setup
+- [ ] Repair prompt (do not rewrite product; keep routes/flows)
+- [ ] All planted defects gone (skill + pattern maps in WORKSPACE-SPEC §10)
+- [ ] No new banned patterns
+- [ ] Browser verification (`WORKSPACE-SPEC.md` §11)
+- [ ] Phase 5 scorecard filled (≥16/17; hard stops clear; `page-patterns` scored)
 
 ## Phase 5 — Scorecards
 
-- [x] Greenfield domain table complete (16 rows)
-- [x] Brownfield domain table complete (16 rows)
-- [ ] Pre-flight audit both runs via `ux-audit` (incl. motion / reduced-motion)
-- [x] Hard stop check: anti-slop + destructive confirm
+- [ ] Greenfield domain table complete (17 rows incl. `page-patterns`)
+- [ ] Brownfield domain table complete (17 rows incl. `page-patterns`)
+- [ ] Pre-flight audit both runs via `ux-audit` (incl. motion / reduced-motion / page pattern gate)
+- [ ] Hard stop check: anti-slop + destructive confirm
 
 ## Phase 6 — Negatives
 
@@ -130,15 +162,17 @@ Kept for history. Re-run against the **18-skill** catalog (setup + `ux-audit` + 
 - Ship? **yes** (for then-current 17-skill catalog)
 - Notes: Ran in `.scratch/` only. Fixtures under `examples/` unchanged. Apps at `.scratch/greenfield` and `.scratch/brownfield`.
 
-### Pending catalog (19 skills / 1 audit + 17 domain)
+### Pending catalog (19 skills / 1 audit + 17 domain) — Harbor fixture
 
 - Date:
 - Agent:
 - Install path: empty → `.skills/`; existing → reuse `.agents/skills/` etc.
+- Product: Harbor (`tests/WORKSPACE-SPEC.md`)
 - Greenfield domain: __ / 17
 - Brownfield domain: __ / 17
+- `page-patterns`: __ (all ten anatomies)
 - Ship?
-- Notes:
+- Notes: Rebuild `examples/` from WORKSPACE-SPEC before scoring.
 
 ### Phase 0–2
 
@@ -166,7 +200,7 @@ Kept for history. Re-run against the **18-skill** catalog (setup + `ux-audit` + 
 | typography | pass | pass | weights ≤600; min 12px; heading/body LH |
 | colour-palette | pass | pass | neutrals; border-first; soft shadow |
 | anti-slop | pass | pass | no rainbow/glass/cartoon/deco input icons/pastel pills |
-| page-patterns | — | — | added 2026-09-11; re-score next eval |
+| page-patterns | — | — | Harbor spec added 2026-09-14; re-score next eval against all 10 patterns |
 | surfaces | pass | pass | slide-over create/edit; settings page; named delete; Cancel focused; Esc |
 | forms | pass | pass | blur/submit validation; submit clickable; no First+Last |
 | keyboard | pass | pass | `:focus-visible` ring; trap; restore |

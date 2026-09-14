@@ -45,7 +45,7 @@ Or install from this repo as a local marketplace via `.claude-plugin/marketplace
 
 In your agent, run it once per project. It will:
 
-- Ask for an aesthetic reference (Linear, Stripe, Apple, Raycast, or Custom)
+- Ask for an aesthetic reference (Linear, Stripe, Apple, Raycast, Notion, or Custom)
 - Confirm a banned anti-aesthetic list
 - Set an accessibility target (WCAG AA or AAA)
 - Set brand tone for microcopy
