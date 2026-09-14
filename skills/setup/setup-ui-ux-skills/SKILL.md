@@ -11,7 +11,7 @@ disable-model-invocation: true
 
 Scaffold the per-project profile that the UI/UX skills assume:
 
-- **Aesthetic reference** — Linear, Stripe, Apple Native, Raycast, or Custom
+- **Aesthetic reference** — Linear, Stripe, Apple Native, Raycast, Notion, or Custom
 - **Banned anti-aesthetics** — glassmorphism, rainbow CTAs, cartoon empties, and related slop
 - **Accessibility target** — WCAG 2.1 AA or AAA
 - **Brand tone** — Utilitarian, Warm Humancentric, or Opinionated Direct
@@ -50,7 +50,10 @@ Offer:
 2. **Stripe** — Refined typography, balanced depth, elegant data tables, high clarity (recommended default for most product UIs)
 3. **Apple Native** — Generous spacing, unified radii, fluid transitions, neutral palettes
 4. **Raycast** — Keyboard-first, ultra-compact, high contrast, pure utility
-5. **Custom** — User provides reference URLs or principles
+5. **Notion** — Warm paper, editorial type, block/page grammar, calm spacing (prefer when the product is document-shaped)
+6. **Custom** — User provides reference URLs or principles
+
+If the user names a brand from the collapse map in [taste-archetypes.md](./reference/taste-archetypes.md) (e.g. Vercel → Linear, Material → Custom), state the mapping in one line and confirm before writing the profile. Do not invent a new standard name.
 
 **Section B: Visual anti-aesthetic (things to aggressively ban)**
 

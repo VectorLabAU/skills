@@ -34,7 +34,7 @@ Do not invent values outside this set. If a design asks for 250ms, snap to 200 o
 | Aesthetic | Bias |
 | --- | --- |
 | Linear / Raycast | Prefer 100–150ms or instant; minimal translate |
-| Stripe | 150–200ms; restrained opacity + small translate |
+| Stripe / Notion | 150–200ms; restrained opacity + small translate |
 | Apple Native | Up to 300ms when it clarifies hierarchy |
 | Custom | Follow profile notes; still stay on the token scale |
 

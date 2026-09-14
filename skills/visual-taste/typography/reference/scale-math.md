@@ -24,7 +24,7 @@ Modular scales keep heading sizes predictable. Pick one ratio per product and st
 
 **Major Second (1.125):** Dense dashboards, data-heavy UI (Linear, Raycast).
 
-**Minor Third (1.2):** Marketing-forward product UI with clearer heading jumps (Stripe-like clarity).
+**Minor Third (1.2):** Marketing-forward product UI with clearer heading jumps (Stripe-like clarity); also Notion editorial pages. Notion page titles may use the high end of H1 (step 4–5).
 
 ## Formula
 
