@@ -19,7 +19,7 @@ Desktop-first layouts break on a phone: a locked sidebar, a 1440px canvas, hover
 - **No page-level horizontal overflow at 375px or 1280px.** `document.documentElement.scrollWidth` must not exceed `clientWidth` at either width. Tables and boards may scroll *inside* one region. Never shrink type below 12px to fit (`typography`).
 - **Hit targets match `.ux-profile.md`.** WCAG AA: 44×44px. AAA: 48×48px. If the profile is missing, use 44×44. Icon-only controls get padding to meet the floor; a 16px glyph is not the tap area.
 - **Hover is extra, not the only path.** Every primary action exists in the layout without hover. Hover-only chrome is allowed only inside `@media (hover: hover)`.
-- **Fluid width, not a fixed canvas.** `html`, `body`, `.app`, `.shell`, and page roots use `width: 100%` plus `max-width`. Ban a root or card locked to a pixel width ≥768px with no wrap or inner-scroll plan.
+- **Cap the main page, not the app.** `html`, `body`, `.app`, and chrome (sidebar, header) are `width: 100%` with **no** max-width. Apply `max-width: var(--vp-wide)` only to the main page content (`main`, `.page`). Ban a root, shell, or card locked to a pixel width ≥768px with no wrap or inner-scroll plan.
 - **Three tokens only — narrow / medium / wide.** Do not invent a fourth breakpoint for a single screen. Values live in [reference/breakpoint-tokens.md](reference/breakpoint-tokens.md).
 - **Chrome collapses on narrow.** A persistent sidebar (≥200px) on a 375px viewport is a fail. Use a menu control that opens the same nav. Then apply the named pattern’s **Narrow** line in the `page-patterns` catalog.
 
@@ -34,11 +34,11 @@ Desktop-first layouts break on a phone: a locked sidebar, a 1440px canvas, hover
 
 #### ❌ Anti-Pattern
 
-App shell is `width: 1440px`. Sidebar stays 240px on a phone. Row “Delete” appears only on hover. Icon buttons are 24×24. The projects table shrinks cells to 11px so every column fits.
+App shell is `width: 1440px` or `max-width: 1280px` on `.app` / `.shell`, so the sidebar and header sit in a centered column. Sidebar stays 240px on a phone. Row “Delete” appears only on hover. Icon buttons are 24×24. The projects table shrinks cells to 11px so every column fits.
 
 #### ✅ Best Practice
 
-Shell is `width: 100%` with a `max-width`. At narrow, a menu button opens the same nav; the sidebar rail is gone. Delete lives in the row ⋯ menu and is always tappable. Icon buttons are at least 44×44. The table keeps 12px+ type and scrolls inside its region.
+Shell and sidebar span the viewport. `main` (or `.page`) is `width: 100%` with `max-width: var(--vp-wide)` and centered. At narrow, a menu button opens the same nav; the sidebar rail is gone. Delete lives in the row ⋯ menu and is always tappable. Icon buttons are at least 44×44. The table keeps 12px+ type and scrolls inside its region.
 
 ### Framework-Agnostic Implementation Blueprint
 
@@ -49,7 +49,14 @@ Shell is `width: 100%` with a `max-width`. At narrow, a menu button opens the sa
   --vp-wide: 1280px;
 }
 
+.app,
 .shell {
+  width: 100%;
+  max-width: none;
+}
+
+main,
+.page {
   width: 100%;
   max-width: var(--vp-wide);
   margin-inline: auto;
@@ -83,7 +90,7 @@ Prove both 375 and 1280 (browser tools or a resized window) before marking UI do
 
 - [ ] Read `.ux-profile.md` if present; note hit-target size (44 or 48).
 - [ ] Use only narrow / medium / wide from [reference/breakpoint-tokens.md](reference/breakpoint-tokens.md).
-- [ ] No pixel `width` ≥768px on `html`, `body`, shell, or page root without `max-width` plus a wrap or inner-scroll plan.
+- [ ] `max-width: var(--vp-wide)` is on `main` / `.page` only — not `html`, `body`, `.app`, `.shell`, sidebar, or header.
 - [ ] Primary actions work without hover; hover extras sit inside `(hover: hover)`.
 - [ ] Hit targets meet the profile floor.
 - [ ] Narrow: sidebar rail gone; the same destinations are reachable from a menu.

@@ -74,7 +74,7 @@ then write markup that matches the named anatomy
 
 **Does not map? Stop.** Infinite canvases, node graphs, AI chat as the page, and command palettes as IA are not patterns. Ask before building.
 
-Width-cap and center the page root so content does not hug the sidebar or stretch edge-to-edge. Use the project’s spacing tokens (`spacing`). On narrow viewports follow `viewports` and this catalog’s **Narrow** line.
+Width-cap and center **main page content** (`main`, `.page`) so it does not hug the sidebar or stretch edge-to-edge. Do not cap the app shell or chrome (`viewports`). Use the project’s spacing tokens (`spacing`). On narrow viewports follow `viewports` and this catalog’s **Narrow** line.
 
 ### Agent Checklist
 

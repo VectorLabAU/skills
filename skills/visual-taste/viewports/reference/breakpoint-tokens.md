@@ -6,7 +6,7 @@ Three named widths. Do not add a fourth for one screen.
 | --- | --- | --- | --- |
 | narrow | `--vp-narrow` | 375px | Phone. Chrome is a menu. Patterns use their catalog **Narrow** line. |
 | medium | `--vp-medium` | 768px | Optional stack point (two-column → one). Not a third design. |
-| wide | `--vp-wide` | 1280px | Desktop prove. Width-cap and center the page root (`spacing`). |
+| wide | `--vp-wide` | 1280px | Desktop prove. Width-cap and center **main page content only** — never the app shell or chrome. |
 
 ## Queries
 
@@ -47,9 +47,17 @@ Read **Touch / focus** in `.ux-profile.md`. Padding on the control counts; the g
 | Width | Sidebar / app rail |
 | --- | --- |
 | narrow | Hidden. Same links in a menu button (or equivalent). |
-| medium / wide | Persistent rail allowed. |
+| medium / wide | Persistent rail allowed. Full viewport width — do not sit chrome inside `--vp-wide`. |
 
 Auth and marketing routes have no app sidebar at any width.
+
+## Where `--vp-wide` goes
+
+| Element | Max-width |
+| --- | --- |
+| `html`, `body`, `.app`, `.shell`, sidebar, header | None. `width: 100%`. |
+| `main`, `.page` (the named page-pattern body) | `var(--vp-wide)`, then center. |
+| A card, table, or KPI strip | No. Cap the page, not every widget. |
 
 ## Not this skill
 

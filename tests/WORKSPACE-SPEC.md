@@ -103,6 +103,7 @@ Brownfield seed minimum (illustrative counts): ≥3 projects, ≥6 tasks across 
 
 - Left sidebar: links to Dashboard, Projects, Tasks, Calendar, Inbox, Messages, Reports, Settings
 - Top header: workspace name, optional account affordance
+- Chrome spans the viewport. `max-width: 1280px` belongs on `main` / the page only (`viewports`)
 - Narrow (<768px): sidebar rail hidden; same destinations from a menu button (`viewports`)
 - Does **not** replace a page pattern. Does **not** appear on `login.html`.
 

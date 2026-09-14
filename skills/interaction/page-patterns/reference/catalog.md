@@ -1,6 +1,6 @@
 # Product page catalog
 
-Build only the pattern you named. Width-cap and center the page root on every pattern. Heading, short description (or status + metadata on Detail), then body.
+Build only the pattern you named. Width-cap and center **main page content** on every pattern — not the app shell or sidebar. Heading, short description (or status + metadata on Detail), then body.
 
 Actions live in the page header — not in the tab row.
 
