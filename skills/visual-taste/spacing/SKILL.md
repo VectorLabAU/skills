@@ -17,7 +17,7 @@ Spatial taste is geometric discipline, not decoration. Layouts feel calm when sp
 ### Hard Rules (Non-Negotiable)
 
 - **8pt grid for major components; 4pt for micro-spacings.** Stack heights, section gaps, card padding, and column gutters snap to multiples of 8px. Icon padding, inline gaps, and label offsets snap to multiples of 4px. Reject odd values (e.g., 13px, 22px) unless documented as an optical correction from [reference/optical-offsets.md](reference/optical-offsets.md).
-- **Max body line length 65–75ch.** Prose containers set `max-width: 65ch` to `75ch`. Wider blocks require a narrower inner column or multi-column layout; never stretch body copy edge-to-edge in wide viewports.
+- **Max body line length 65–75ch.** Prose containers set `max-width: 65ch` to `75ch`. Wider blocks require a narrower inner column or multi-column layout; never stretch body copy edge-to-edge in wide viewports. Narrow overflow, chrome collapse, and hit targets are `viewports`.
 - **Uniform optical baselines within a hierarchy level.** Siblings at the same heading or list level share one baseline grid. Mixed font sizes in one row require explicit vertical alignment (flex `align-items: baseline` or calculated offsets), not default box-center alignment.
 - **Icon-to-text aligns to font cap-height, not full bounding box.** Inline icons sit on the cap-height centerline of adjacent text. Do not vertically center icons to the text element's total line box unless the icon is taller than one line and the reference doc says otherwise.
 

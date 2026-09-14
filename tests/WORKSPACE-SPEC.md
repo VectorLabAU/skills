@@ -18,7 +18,9 @@ Harbor is one small team projects workspace used to harden the **entire** skill 
 | Greenfield | `examples/greenfield/` | Empty shell. Agent builds every route from job descriptions (no pattern names in the prompt). |
 | Brownfield | `examples/brownfield/` | Same routes and data, already working, with planted fails. Agent repairs without rewriting the product. |
 
-Both finished apps must exercise **all 17 domain skills** on a full run. No silent `n/a` for a skill that this product covers.
+Both finished apps must exercise **all 18 domain skills** on a full run. No silent `n/a` for a skill that this product covers.
+
+**Reset (2026-09-14):** scored `.scratch/harbor-*` apps wiped. Next eval starts from `examples/` fixtures and must score `viewports`.
 
 Shared profile for scored runs: Stripe / default bans / WCAG 2.1 AA / Utilitarian & Minimal / Lucide.
 
@@ -62,7 +64,8 @@ npx --yes serve .
 | `/settings.html` | Configure the workspace | 5 Settings | workspace prefs |
 
 **Chrome** (sidebar + top header) frames signed-in pages. Chrome is **not** a page pattern.  
-**Auth** (`login.html`) has **no** app sidebar.
+On `viewports` narrow (<768px) the sidebar is **not** a persistent rail — the same links live in a menu.  
+**Auth** (`login.html`) has **no** app sidebar at any width.
 
 **Out of scope:** marketing routes, React/Svelte ports, committing example trees, LLM CI.
 
@@ -100,6 +103,7 @@ Brownfield seed minimum (illustrative counts): ≥3 projects, ≥6 tasks across 
 
 - Left sidebar: links to Dashboard, Projects, Tasks, Calendar, Inbox, Messages, Reports, Settings
 - Top header: workspace name, optional account affordance
+- Narrow (<768px): sidebar rail hidden; same destinations from a menu button (`viewports`)
 - Does **not** replace a page pattern. Does **not** appear on `login.html`.
 
 ### Pattern naming (greenfield)
@@ -324,6 +328,7 @@ Every domain skill must be applicable on a full Harbor run.
 | typography | ≤3 weights, none &gt;600; no text &lt;12px; heading LH 1.1–1.25; body 1.5–1.6 |
 | colour-palette | 60-30-10; 1px border before shadow; light shadow alpha &lt;0.08 |
 | anti-slop | No rainbow CTA, unbounded glass, cartoon people, decorative input icons, pastel metadata pills |
+| viewports | No page overflow at 375 or 1280; chrome collapsed on narrow; hit targets ≥44px (AA); primary actions work without hover |
 | page-patterns | Pattern named before each page’s markup (greenfield); all ten anatomies match; no invented eleventh pattern |
 | surfaces | Inline / slide-over / route / named delete as in §7 |
 | forms | Blur-first; clear on focus/keystroke; submit always clickable; no First+Last split for one name |
@@ -382,6 +387,7 @@ Also include:
 - Saves that can be fast, slow (>1s with skeletons), or fail with a blameless error + Copy error details
 - Full keyboard access through overlays; board stage change without relying on drag alone; messages list arrows + Enter
 - Short overlay enter/exit that respects prefers-reduced-motion
+- Layouts work at 375px: no page-level horizontal scroll; sidebar becomes a menu; actions work without hover
 - localStorage data model from the Harbor spec; start empty so zero-states appear
 
 Use this project’s UI/UX profile and skills. Do not skip setup artifacts if they exist.
@@ -423,6 +429,7 @@ Same for CSS/JS comments.
 | typography | Weights 400–800; 11px cells; inverted line-heights (heading 1.6, body 1.3) |
 | colour-palette | Saturated canvas; shadow alpha 0.25; rainbow CTA |
 | anti-slop | Glass blur; cartoon empty; decorative input icons; pastel pills |
+| viewports | Shell or body `width: 1440px`; sidebar always 240px; 24×24 icon buttons; row Delete hover-only |
 | surfaces | Stacked modals; “Are you sure?” / OK; rename swaps taller input or Save/Cancel wrap so next row jumps |
 | forms | Validate-while-typing; disabled Submit; First+Last for project name; placeholder-as-label |
 | keyboard | `outline: none`; no focus trap; no restore |
@@ -464,11 +471,13 @@ Same for CSS/JS comments.
 - Pastel pill badges on static metadata
 - Decorative emoji/icon inside text inputs
 - Bounce/elastic keyframes; `transition: height`; no reduced-motion media query
+- `body` or `.shell` `width: 1440px`; sidebar `width: 240px` with no narrow collapse
+- Icon buttons 24×24; a row Delete shown only on `:hover` (no `(hover: hover)` gate)
 
 ### Repair prompt
 
 ```text
-Fix this Harbor workspace to match our UI/UX skills and tests/WORKSPACE-SPEC.md. Do not rewrite the product — keep the same features, routes, and flows. Repair layout, type, colour, slop, page patterns, surfaces, forms, keyboard, defaults, copy, loaders, empty states, and motion.
+Fix this Harbor workspace to match our UI/UX skills and tests/WORKSPACE-SPEC.md. Do not rewrite the product — keep the same features, routes, and flows. Repair layout, type, colour, slop, viewports, page patterns, surfaces, forms, keyboard, defaults, copy, loaders, empty states, and motion.
 ```
 
 ---
@@ -494,6 +503,7 @@ Start a static server. Exercise as a user. A screenshot alone is **not** verific
 15. **Loaders** — fast save no flicker; slow list/report skeleton; no full-page spinner
 16. **Errors** — failed save blameless + Copy error details
 17. **Motion** — overlay open/close; with reduced-motion emulated, no slide/bounce; meaning not motion-only
+18. **Viewports** — resize a signed-in page to 375px: no page-level horizontal scroll; sidebar rail gone; menu reaches the same links; a primary action works without hover
 
 ---
 

@@ -26,6 +26,7 @@
     "./skills/visual-taste/typography",
     "./skills/visual-taste/colour-palette",
     "./skills/visual-taste/anti-slop",
+    "./skills/visual-taste/viewports",
     "./skills/interaction/page-patterns",
     "./skills/interaction/surfaces",
     "./skills/interaction/forms",

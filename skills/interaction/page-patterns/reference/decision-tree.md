@@ -10,7 +10,7 @@ Do not write page markup until a name is stated.
 | --- | --- |
 | One field (rename, title) | Stop. `surfaces` → inline edit. |
 | A short form that should keep the current page in view | Stop. `surfaces` → slide-over. |
-| Sidebar, header, footer, or a menu | Chrome. Not a page pattern. |
+| Sidebar, header, footer, or a menu | Chrome. Not a page pattern. On narrow, collapse per `viewports`. |
 | A chart, KPI tile, dialog, uploader, or empty block | A component. It sits inside a page. |
 | A signed-in or public **route** with its own URL | Continue. |
 

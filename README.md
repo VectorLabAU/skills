@@ -55,7 +55,7 @@ It writes `.ux-profile.md` at the project root and adds a short pointer in `CLAU
 
 ### 3. Build UI
 
-Other skills load when the task fits (page patterns, forms, surfaces, empty states, loaders, copy, motion). Each one reads `.ux-profile.md` first when that file exists. **Before any new page**, run `page-patterns` and name the pattern. Before finishing UI, run `ux-audit`.
+Other skills load when the task fits (page patterns, viewports, forms, surfaces, empty states, loaders, copy, motion). Each one reads `.ux-profile.md` first when that file exists. **Before any new page**, run `page-patterns` and name the pattern. Layouts must pass `viewports` at 375px and 1280px. Before finishing UI, run `ux-audit`.
 
 ## Skills
 
@@ -85,6 +85,7 @@ Rich descriptions so the agent can reach for them when the task fits.
 - [colour-palette](./skills/visual-taste/colour-palette/SKILL.md) — 60-30-10, borders before shadows
 - [spacing](./skills/visual-taste/spacing/SKILL.md) — 4/8pt rhythm, optical alignment, line length
 - [anti-slop](./skills/visual-taste/anti-slop/SKILL.md) — bans glassmorphism, rainbow CTAs, cartoon empties
+- [viewports](./skills/visual-taste/viewports/SKILL.md) — no page overflow at 375/1280, collapsed chrome, profile hit targets, tap-first
 
 **Interaction**
 

@@ -29,7 +29,7 @@ See [reference/destructive-actions.md](reference/destructive-actions.md) for con
 
 - One field + one action = **inline edit**. Never a slide-over or modal.
 - Two or more fields and still <10s = slide-over. Three+ fields or branching steps = page.
-- Slide-overs enter from the trailing edge (right in LTR); width 400–480px for forms, full-height on mobile.
+- Slide-overs enter from the trailing edge (right in LTR); width 400–480px for forms, full-height on narrow (`viewports`).
 - Inline edit: show a pencil or pointer affordance on hover/focus; keep the label and input in the same box. Prefer Enter / Escape. Add Save/Cancel only if that slot already exists in the display state.
 - Prefer URL-updatable state for ≥10s tasks so refresh and share links preserve progress.
 - Non-destructive dismiss (Escape, backdrop click on non-modal popover) must not lose unsaved work — persist draft per `defaults`.
