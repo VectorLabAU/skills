@@ -1,10 +1,12 @@
 # Product page catalog
 
-Build only the pattern you named. Width-cap and center the page root on every pattern. Heading, short description (or status + metadata on Detail), then body.
+Build only the pattern you named. Width-cap and center **main page content** on every pattern — not the app shell or sidebar. Heading, short description (or status + metadata on Detail), then body.
 
 Actions live in the page header — not in the tab row.
 
 **Tabs:** 1–5 sections → one horizontal tab row under the header. 6+ sections → a narrow sticky section nav beside the content. Never wrap or overflow tab labels.
+
+**Narrow** lines below are required once `viewports` says the viewport is narrow. Do not invent extra breakpoints per pattern.
 
 ---
 
@@ -39,6 +41,8 @@ Pagination (always, even on one page)
 - Card grids as the default index (use a table unless the domain is visual-first media)
 - A filter with no matching visible column
 
+**Narrow:** Toolbar wraps. Table may scroll inside its region (sticky first column optional). Never shrink cells below 12px.
+
 ---
 
 ## 2 — Detail / Record
@@ -66,6 +70,8 @@ Tab body (owns its own loading / empty / error)
 - Cards wrapping each tab section
 - Horizontal tabs once there are 6+ sections
 
+**Narrow:** Tab labels do not wrap. Use a scroll-snap row or a select if they would overflow. Metadata stacks.
+
 ---
 
 ## 3 — Form
@@ -92,6 +98,8 @@ Tab body (owns its own loading / empty / error)
 - App chrome on auth
 - A full page when `surfaces` required a slide-over
 
+**Narrow:** Column is 100% of the content area. Sticky Cancel / Save stay on screen.
+
 ---
 
 ## 4 — Dashboard / Overview
@@ -117,6 +125,8 @@ Supporting list (recent activity, upcoming)
 - Date-range filters, drill-down, or a live ops console (that is Pattern 9)
 - Six or more tiles
 - Editable records on the dashboard
+
+**Narrow:** KPI strip stacks to one or two columns. Chart is full width of the content area.
 
 ---
 
@@ -145,6 +155,8 @@ Section nav (sticky) | Section heading
 - Tabs as the only category switch
 - One card per individual setting
 - Record-editing fields that belong on Detail
+
+**Narrow:** Section nav becomes a top select or a stacked list — not a side rail beside the fields.
 
 ---
 
@@ -176,6 +188,8 @@ Stage (n)     Stage (n)     Stage (n)
 - Use a table when stage progression is the main job
 - A board for data with no real lifecycle
 
+**Narrow:** Columns snap-scroll horizontally. Stages stay visible. Do not hide columns to fit.
+
 ---
 
 ## 7 — Calendar
@@ -202,6 +216,8 @@ date cells with event bars
 
 - Replace the grid with a blank empty-state page
 - Mix unrelated record types without a clear label or colour key
+
+**Narrow:** Month grid stays. Cells may shrink; type stays ≥12px. Do not replace the grid with a list unless the user toggled a view.
 
 ---
 
@@ -233,6 +249,8 @@ One sentence
 - Navigate away on select
 - Put a DataTable in the left pane
 - Use this when each item needs a full tabbed Detail as the normal path
+
+**Narrow:** List is full width. Tap opens a full Detail page (not a squeezed dual pane).
 
 ---
 
@@ -271,6 +289,8 @@ Detail table
 - Inline-edit numbers on the report
 - Put Export in the header on any other pattern
 
+**Narrow:** Filters stack. Charts are full width. Detail table scrolls inside its region.
+
 ---
 
 ## 10 — Inbox / Activity Feed
@@ -306,6 +326,8 @@ Load more
 
 - DataTable chrome on a feed
 - Mix A and B in one component
+
+**Narrow:** Approve / Decline stay visible or live in the row ⋯. Do not hide them behind hover.
 
 ---
 

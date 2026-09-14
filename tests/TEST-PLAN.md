@@ -1,6 +1,6 @@
 # UX Skills — Full Test Plan
 
-Eval protocol for the VectorLab UI/UX skills catalog (**19 skills**: 1 setup + 1 audit + 17 domain). Success means an agent can **install**, **configure**, and **apply** the skills — not only that the markdown files exist.
+Eval protocol for the VectorLab UI/UX skills catalog (**20 skills**: 1 setup + 1 audit + 18 domain). Success means an agent can **install**, **configure**, and **apply** the skills — not only that the markdown files exist.
 
 Soft taste/heuristics are notes only. Hard rules from each `SKILL.md` are pass/fail.
 
@@ -51,13 +51,13 @@ Static checks before any install.
 
 | # | Check | Pass criteria |
 | --- | --- | --- |
-| 0.1 | Skill count | Exactly **19** folders with `SKILL.md` under `skills/` (excluding `skills/config/`) |
+| 0.1 | Skill count | Exactly **20** folders with `SKILL.md` under `skills/` (excluding `skills/config/`) |
 | 0.2 | Name match | Folder name equals YAML `name` in each `SKILL.md` |
 | 0.3 | Description | Every skill has `name` + `description` (third person, &lt;1024 chars, includes WHEN) |
 | 0.4 | Setup only | Only `setup-ui-ux-skills` has `disable-model-invocation: true` |
 | 0.5 | OpenAI policy | `skills/setup/setup-ui-ux-skills/agents/openai.yaml` has `allow_implicit_invocation: false` |
-| 0.6 | References | Every brief-named `reference/*.md` exists and is linked from its `SKILL.md` (includes `icon-libraries.md`, `timing-tokens.md`, `enter-exit.md`, `motion-a11y.md`, `decision-tree.md`, `catalog.md`, `marketing.md`) |
-| 0.7 | Plugin | `.claude-plugin/plugin.json` lists all **19** paths; `marketplace.json` source is `./` |
+| 0.6 | References | Every brief-named `reference/*.md` exists and is linked from its `SKILL.md` (includes `icon-libraries.md`, `timing-tokens.md`, `enter-exit.md`, `motion-a11y.md`, `decision-tree.md`, `catalog.md`, `marketing.md`, `breakpoint-tokens.md`) |
+| 0.7 | Plugin | `.claude-plugin/plugin.json` lists all **20** paths; `marketplace.json` source is `./` |
 
 **Release:** all Phase 0 rows pass.
 
@@ -75,7 +75,7 @@ npx skills@latest add /Users/robbarion/Vector-Lab/UX-Skills
 
 | Expect | Pass if |
 | --- | --- |
-| Skill picker | All **19** skills offered |
+| Skill picker | All **20** skills offered |
 | Setup + audit included | `setup-ui-ux-skills` and `ux-audit` are selectable / selected |
 | Install target | Empty scratch → files under `.skills/`. Scratch that already has `.agents/skills/` (or `.cursor/skills/` / `.claude/skills/`) → files stay in that tree; no second skill root |
 | Lockfile | `skills-lock.json` present if CLI writes one |
@@ -90,7 +90,7 @@ Same expectations as 1A. **Fail** if published tree is stale vs this clone (comp
 
 ### 1C. Claude Code local marketplace
 
-If `claude` CLI is available, install from `.claude-plugin/marketplace.json`. Expect the same 19 skills; setup remains user-invoked only.
+If `claude` CLI is available, install from `.claude-plugin/marketplace.json`. Expect the same 20 skills; setup remains user-invoked only.
 
 ### 1D. Negative — dual install
 
@@ -124,8 +124,9 @@ Follow `skills/setup/setup-ui-ux-skills/SKILL.md`:
 
 Taste, a11y, bans, voice, and icon library for this project live in `.ux-profile.md`.
 Run `setup-ui-ux-skills` again only to change those defaults.
-Before UI or microcopy work, read `.ux-profile.md`, then the matching domain skill (page-patterns, forms, surfaces, loaders, empty-states, copy, motion).
+Before UI or microcopy work, read `.ux-profile.md`, then the matching domain skill (page-patterns, viewports, forms, surfaces, loaders, empty-states, copy, motion).
 Before creating a new page, read `page-patterns` and name the pattern. Do not write page markup until the pattern is named.
+Layouts must pass `viewports` at 375px and 1280px.
 Before finishing UI, run `ux-audit`.
 ```
 
@@ -205,6 +206,7 @@ Also include:
 - Saves that can be fast, slow (>1s with skeletons), or fail with a blameless error + Copy error details
 - Full keyboard access through overlays; board stage change without relying on drag alone; messages list arrows + Enter
 - Short overlay enter/exit that respects prefers-reduced-motion
+- Layouts work at 375px: no page-level horizontal scroll; sidebar becomes a menu; actions work without hover
 - localStorage data model from the Harbor spec; start empty so zero-states appear
 
 Use this project’s UI/UX profile and skills. Do not skip setup artifacts if they exist.
@@ -231,7 +233,7 @@ Finish the UI. Run `ux-audit`.
 ### Prompt
 
 ```text
-Fix this Harbor workspace to match our UI/UX skills and tests/WORKSPACE-SPEC.md. Do not rewrite the product — keep the same features, routes, and flows. Repair layout, type, colour, slop, page patterns, surfaces, forms, keyboard, defaults, copy, loaders, empty states, and motion.
+Fix this Harbor workspace to match our UI/UX skills and tests/WORKSPACE-SPEC.md. Do not rewrite the product — keep the same features, routes, and flows. Repair layout, type, colour, slop, viewports, page patterns, surfaces, forms, keyboard, defaults, copy, loaders, empty states, and motion.
 ```
 
 ### Planted defects (must be gone after repair)
@@ -244,6 +246,7 @@ Full maps live in [`WORKSPACE-SPEC.md` §10](WORKSPACE-SPEC.md). Summary:
 | typography | Weights 400–800; 11px cells; inverted line-heights |
 | colour-palette | Saturated canvas; shadow alpha 0.25; rainbow CTA |
 | anti-slop | Glass blur; cartoon empty; decorative input icons; pastel pills |
+| viewports | Shell or body `width: 1440px`; sidebar always 240px; 24×24 icon buttons; row Delete hover-only |
 | page-patterns | See pattern-plant table below |
 | surfaces | Stacked modals; “Are you sure?” / OK; rename swaps in a taller input (or Save/Cancel wrap) so the next row jumps |
 | forms | Validate-while-typing; disabled Submit; First+Last; placeholder-as-label |
@@ -293,6 +296,7 @@ Score each row `pass` / `fail` / `n/a`. Any hard-rule miss → `fail`. Run once 
 | typography | ≤3 weights, none &gt;600; no text &lt;12px; heading LH 1.1–1.25; body 1.5–1.6 |
 | colour-palette | 60-30-10; 1px border before shadow; light shadow alpha &lt;0.08 |
 | anti-slop | No rainbow CTA, unbounded glass, cartoon people, decorative input icons, metadata pills |
+| viewports | No page overflow at 375 or 1280; chrome collapsed on narrow; hit targets ≥44px (AA); primary actions work without hover; only narrow/medium/wide tokens |
 | page-patterns | Transcript names a locked pattern **before** each Harbor page’s markup (greenfield) or after repair (brownfield); reviewer can name all ten patterns from layout alone; anatomies match `WORKSPACE-SPEC.md` §6; no invented eleventh product pattern |
 | surfaces | &lt;10s slide-over; ≥10s route; no stacked modals; named-entity delete; Cancel focused; Esc dismisses; **single-field inline edit with 0 layout shift** (neighbor `top`/`left` unchanged; no drawer/modal for one field) |
 | forms | Blur-first; clear on focus/keystroke; submit always clickable; no redundant fields |
@@ -319,6 +323,7 @@ After scoring domain skills, confirm Prompt B ran `ux-audit` and the hard gate p
 6. Validation fires on blur and clears on focus/edit
 7. Motion uses transform/opacity tokens; reduced-motion honored
 8. New or changed pages name one locked page pattern (or marketing route type) and match it
+9. No page-level overflow at 375px; chrome collapsed on narrow; hit targets meet the profile
 
 ### Browser verification (required)
 
@@ -338,6 +343,7 @@ Minimum path:
 - Fast save (no flicker); slow list (skeleton); failed save (blameless + copy details)
 - Empty state CTA; filtered empty → Clear all filters
 - Overlay open/close without layout jump; with reduced-motion emulated, overlays do not slide/bounce
+- 375px signed-in page: no page-level horizontal scroll; sidebar rail gone; menu reaches the same links; a primary action works without hover
 
 A screenshot alone is **not** verification.
 
@@ -353,6 +359,7 @@ A screenshot alone is **not** verification.
 | 6.4 | Agent reads surface skill then ships “Are you sure?” | **Fail** `surfaces` |
 | 6.5 | Agent reads surface skill then ships a one-field rename that moves neighbors or opens a drawer | **Fail** `surfaces` |
 | 6.6 | Agent builds a new page without naming a `page-patterns` pattern first, or invents an eleventh product pattern | **Fail** `page-patterns` |
+| 6.7 | Agent ships a page with horizontal overflow at 375px, a persistent sidebar on narrow, or hover-only primary actions | **Fail** `viewports` |
 
 ---
 
@@ -388,6 +395,7 @@ Copy per run.
 | typography | | |
 | colour-palette | | |
 | anti-slop | | |
+| viewports | | |
 | page-patterns | | |
 | surfaces | | |
 | forms | | |
@@ -414,10 +422,11 @@ Copy per run.
 | Blur validation | |
 | Motion / reduced-motion | |
 | Page pattern named + matched | |
+| Viewports (375 overflow / chrome / hits) | |
 
 ### Domain score
 
-- Passed: __ / 17
+- Passed: __ / 18
 - Hard stop triggered? (anti-slop or destructive confirm fail): yes / no
 ```
 
@@ -428,8 +437,8 @@ Copy per run.
 | Phase 0 | All pass |
 | Phase 1 | 1A pass |
 | Phase 2 | Defaults (2F) + file-pick matrix (2A–2D) pass |
-| Greenfield | ≥16 / 17 domain skills pass |
-| Brownfield | ≥16 / 17 domain skills pass |
+| Greenfield | ≥17 / 18 domain skills pass |
+| Brownfield | ≥17 / 18 domain skills pass |
 | Hard stop | Any `anti-slop` **or** destructive-confirm fail → do not ship |
 
 ---

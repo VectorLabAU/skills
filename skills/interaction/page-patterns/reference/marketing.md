@@ -45,3 +45,4 @@ A single block (hero, FAQ, logo cloud) is a **section**, not a page. A real rout
 - Blog and product indexes may reuse List ideas (search, filters, pagination) with a visual card skin. Case studies may reuse Detail ideas (metadata + sections). Still name the **route type**, not Pattern 1 or 2.
 - Spacing and type follow `spacing` and `typography`. Line length on article and about copy stays 65–75ch.
 - Banned visuals in `.ux-profile.md` still apply (rainbow CTAs, cartoon people, glass slop).
+- **Narrow (`viewports`):** Nav collapses to a menu. Grids go one column. No app sidebar. Compare tables scroll inside their region.

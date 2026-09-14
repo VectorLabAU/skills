@@ -50,7 +50,7 @@ Rules:
 
 ### 4. Hard gate (always)
 
-Score these eight checks against the working set (code-first; browser when tools exist for interactive/visual items):
+Score these nine checks against the working set (code-first; browser when tools exist for interactive/visual items):
 
 1. Anything on the banned anti-aesthetic list?
 2. Modal where a slide-over or inline edit was required (<10s rule)?
@@ -60,6 +60,7 @@ Score these eight checks against the working set (code-first; browser when tools
 6. Validation fires on blur and clears on focus/edit?
 7. Motion uses only transform/opacity tokens, and reduced-motion is honored?
 8. New or changed pages name one locked `page-patterns` pattern (or a marketing route type) and match that structure?
+9. No page-level horizontal overflow at 375px; chrome collapsed on narrow; hit targets meet the profile?
 
 ### 5. Domain skills
 
@@ -71,7 +72,7 @@ For every discovered domain skill:
 ### 6. Evidence
 
 - Code-first for every check (read, grep, diff).
-- Browser only when tools exist and the check is visual or interactive (0-shift rename, focus trap/restore, overlay routing, motion, reduced-motion).
+- Browser only when tools exist and the check is visual or interactive (0-shift rename, focus trap/restore, overlay routing, motion, reduced-motion, viewport overflow).
 - If there is no browser, list those rows under **Unproven** — do not mark them `pass`.
 
 ### 7. Fix and re-check
@@ -89,7 +90,7 @@ Profile: .ux-profile.md | missing — catalog defaults
 Install root: .skills/ | .agents/skills/ | …
 
 ## Hard gate
-1–8 pass/fail + evidence
+1–9 pass/fail + evidence
 
 ## Domain skills
 skill | pass/fail/n/a | evidence or reason
