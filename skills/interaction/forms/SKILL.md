@@ -10,6 +10,8 @@ references:
 
 If `.ux-profile.md` exists at the project root, read it before changing surfaces, forms, or focus behavior.
 
+If this form is a dedicated page (auth, wizard, or long edit), name **Pattern 3 — Form** via `page-patterns` before writing the page.
+
 ### Intent
 
 Forms punish users when errors appear too early, linger too long, or block submission with a dead button. Validation should reward correction, reduce field count, and never trap the user behind a disabled submit control.
@@ -80,6 +82,7 @@ on submit click:
 ### Agent Checklist
 
 - [ ] Read `.ux-profile.md` if present.
+- [ ] If this is a form page (not a slide-over), name Pattern 3 via `page-patterns` first.
 - [ ] Confirm pristine fields never show validation errors during typing.
 - [ ] Validation fires on first blur; errors clear on focus or first corrective keystroke.
 - [ ] Audit field list for redundancy; remove or infer where possible.

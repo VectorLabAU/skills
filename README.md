@@ -55,7 +55,7 @@ It writes `.ux-profile.md` at the project root and adds a short pointer in `CLAU
 
 ### 3. Build UI
 
-Other skills load when the task fits (forms, surfaces, empty states, loaders, copy, motion). Each one reads `.ux-profile.md` first when that file exists. Before finishing UI, run `ux-audit`.
+Other skills load when the task fits (page patterns, forms, surfaces, empty states, loaders, copy, motion). Each one reads `.ux-profile.md` first when that file exists. **Before any new page**, run `page-patterns` and name the pattern. Before finishing UI, run `ux-audit`.
 
 ## Skills
 
@@ -88,6 +88,7 @@ Rich descriptions so the agent can reach for them when the task fits.
 
 **Interaction**
 
+- [page-patterns](./skills/interaction/page-patterns/SKILL.md) — name list / detail / form / dashboard / settings / board / calendar / split pane / analytics / inbox before building a page
 - [surfaces](./skills/interaction/surfaces/SKILL.md) — slide-over vs page vs inline; destructive confirm
 - [forms](./skills/interaction/forms/SKILL.md) — blur validation, clickable submit
 - [keyboard](./skills/interaction/keyboard/SKILL.md) — full keyboard paths, focus rings, traps
