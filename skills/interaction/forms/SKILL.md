@@ -33,6 +33,7 @@ See [reference/form-best-practices.md](reference/form-best-practices.md) for key
 - Group related fields; validate optional fields only on blur if touched.
 - Submit shows inline loading on the button, not a page freeze; preserve entered values on server error.
 - Required fields: visible label + `required` attribute; do not rely on placeholder or color alone.
+- Why (Laws of UX): More choices slow the decision (Hick’s Law, Jon Yablonski). That is why we cut fields and keep one path. https://lawsofux.com/hicks-law/
 
 ### Concrete Scenarios (Before vs. After)
 

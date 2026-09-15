@@ -28,6 +28,7 @@ See [reference/state-persistence.md](reference/state-persistence.md) for draft a
 - On restore, highlight restored draft subtly: "Draft restored — last edited 2 min ago" with Discard option.
 - Defaults rank: explicit user preference > last used in this workspace > locale/timezone heuristic > safe system fallback.
 - Clear persisted draft on successful submit or explicit Discard.
+- Why (Laws of UX): Some complexity cannot be deleted — we absorb it so the user does not (Tesler’s Law, Jon Yablonski). Defaults and drafts do that work. https://lawsofux.com/teslers-law/
 
 ### Concrete Scenarios (Before vs. After)
 

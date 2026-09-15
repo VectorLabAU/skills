@@ -35,6 +35,7 @@ See [reference/decision-tree.md](reference/decision-tree.md) to pick the pattern
 - Settings configure the product. Detail shows one record. Do not put record fields on Settings.
 - Auth (login, register, forgot, reset, verify, 2FA) is **Form (auth)** — a centered card, no app sidebar.
 - Public marketing pages are composed sections, not a product pattern. Name the route type (home, about, contact, …) then stack sections.
+- Why (Laws of UX): People expect your screens to work like the ones they already know (Jakob’s Law, Jon Yablonski). Lock a familiar pattern before inventing a layout. https://lawsofux.com/jakobs-law/
 
 ### Concrete Scenarios (Before vs. After)
 
