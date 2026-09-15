@@ -1,6 +1,7 @@
 {
   "name": "vectorlab-ux-skills",
-  "version": "0.1.0",
+  "displayName": "VectorLab UI/UX Skills",
+  "version": "1.0.0",
   "description": "VectorLab UI/UX, microcopy, and visual taste skills: low-friction, high-taste interfaces for any frontend stack.",
   "author": {
     "name": "VectorLab",

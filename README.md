@@ -30,14 +30,28 @@ Pick the skills you want, and which coding agents to install them on. **Make sur
 </details>
 
 <details>
-<summary><strong>Claude Code plugin (when published)</strong></summary>
+<summary><strong>Claude Code plugin</strong></summary>
+
+**Own marketplace** (available now):
 
 ```bash
-# After the marketplace listing exists:
-claude plugins install vectorlab-ux-skills
+claude plugin marketplace add VectorLabAU/skills
+claude plugin install vectorlab-ux-skills@vectorlab
 ```
 
-Or install from this repo as a local marketplace via `.claude-plugin/marketplace.json`.
+In Claude Code:
+
+```
+/plugin marketplace add VectorLabAU/skills
+/plugin install vectorlab-ux-skills@vectorlab
+```
+
+**Anthropic community marketplace** (after directory approval + nightly sync):
+
+```
+/plugin marketplace add anthropics/claude-plugins-community
+/plugin install vectorlab-ux-skills@claude-community
+```
 
 </details>
 
