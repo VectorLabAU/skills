@@ -29,6 +29,7 @@ Desktop-first layouts break on a phone: a locked sidebar, a 1440px canvas, hover
 - Prefer wrap and stack over a second horizontal scrollbar on the page. One inner overflow region per view is enough.
 - Slide-overs go full-height on narrow (`surfaces`).
 - Safe-area insets and native device chrome are out of scope. This skill is viewport CSS.
+- Why (Laws of UX): Bigger, closer targets are faster to hit (Fitts’s Law, Jon Yablonski). That is why the hit area is 44×44 or 48×48, not the glyph. https://lawsofux.com/fittss-law/
 
 ### Concrete Scenarios (Before vs. After)
 

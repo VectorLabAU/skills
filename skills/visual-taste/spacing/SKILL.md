@@ -28,6 +28,7 @@ Spatial taste is geometric discipline, not decoration. Layouts feel calm when sp
 - When in doubt, add whitespace between sections rather than between items inside a section.
 - Optical corrections (±1–2px nudges) are allowed only for icons, chevrons, and SVG marks — never for arbitrary layout gaps.
 - Reserve space for async content (badges, counts) to avoid layout shift when data loads.
+- Why (Laws of UX): Things close together read as a group (Law of Proximity). A shared boundary makes the group obvious (Law of Common Region). Tight gaps inside a group, larger gaps between groups, and a clear container. Jon Yablonski, Laws of UX. https://lawsofux.com/law-of-proximity/ https://lawsofux.com/law-of-common-region/
 
 ### Concrete Scenarios (Before vs. After)
 

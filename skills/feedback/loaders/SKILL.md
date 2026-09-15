@@ -27,6 +27,7 @@ Loading feedback should match wait time so the interface feels instant when it i
 - Prefer reduced motion: respect `prefers-reduced-motion` — static skeleton blocks or opacity pulse, not aggressive shimmer.
 - Button loading: keep label readable or swap to verb + ing (Saving…) with `aria-busy="true"` on the control.
 - Parallel requests: one skeleton for the container, not a spinner per cell unless cells load independently >1s.
+- Why (Laws of UX): Keep the loop tight so neither side waits (Doherty Threshold, Jon Yablonski). https://lawsofux.com/doherty-threshold/
 
 See [reference/timing-benchmarks.md](reference/timing-benchmarks.md) for perceptual thresholds and skeleton shimmer rhythm.
 
