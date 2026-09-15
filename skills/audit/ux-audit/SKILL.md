@@ -23,6 +23,8 @@ If `.ux-profile.md` exists at the project root, read it.
 
 If missing, continue with catalog defaults: Stripe aesthetic, default ban list from the setup skill’s anti-patterns reference, WCAG 2.1 AA, Utilitarian & Minimal voice. Note `profile missing — catalog defaults` in the report. Do **not** run `setup-ui-ux-skills`.
 
+**Profile application:** Restraint removes decoration. It does not remove structure. “Borders rare” never means a data table with no container, no hairlines, and no L1 surface.
+
 ### 2. Working set
 
 Name the scope: files changed this turn, plus any screen or path the user named. Unmentioned areas are out of scope for scoring (domain skills that only apply there → `n/a`).
@@ -50,7 +52,7 @@ Rules:
 
 ### 4. Hard gate (always)
 
-Score these nine checks against the working set (code-first; browser when tools exist for interactive/visual items):
+Score these ten checks against the working set (code-first; browser when tools exist for interactive/visual items):
 
 1. Anything on the banned anti-aesthetic list?
 2. Modal where a slide-over or inline edit was required (<10s rule)?
@@ -61,6 +63,7 @@ Score these nine checks against the working set (code-first; browser when tools 
 7. Motion uses only transform/opacity tokens, and reduced-motion is honored?
 8. New or changed pages name one locked `page-patterns` pattern (or a marketing route type) and match that structure?
 9. No page-level horizontal overflow at 375px; chrome collapsed on narrow; hit targets meet the profile?
+10. **Visual finish** — fail if a screenshot of the working-set screen looks unfinished: missing L1 on lists/tables, primary content at meta size, unlabeled search on a wide page, or clickable rows with no resting affordance. Score from the image (see Evidence). Domain detail lives in `colour-palette`, `typography`, `page-patterns`, and `labels` — do not rewrite those rules here.
 
 ### 5. Domain skills
 
@@ -72,8 +75,11 @@ For every discovered domain skill:
 ### 6. Evidence
 
 - Code-first for every check (read, grep, diff).
-- Browser only when tools exist and the check is visual or interactive (0-shift rename, focus trap/restore, overlay routing, motion, reduced-motion, viewport overflow).
-- If there is no browser, list those rows under **Unproven** — do not mark them `pass`.
+- **Code-first is not enough** for visual rows: colour-palette 60-30-10, typography computed size, list/table surface, and type paint bugs. Class names and a11y YAML alone cannot mark those rows `pass`.
+- If a browser exists: take a **screenshot** at 375 and 1280 of each changed page. Score visual rows (gate 10, colour-palette, typography primary size, list/table frame) from the image, not only the a11y YAML.
+- A11y snapshots and `scrollWidth` may not mark visual rows `pass` by themselves.
+- Browser also when the check is interactive (0-shift rename, focus trap/restore, overlay routing, motion, reduced-motion, viewport overflow).
+- If there is no browser, list those visual and interactive rows under **Unproven** — do not mark them `pass`. Never pass visual rows from class names alone.
 
 ### 7. Fix and re-check
 
@@ -90,7 +96,12 @@ Profile: .ux-profile.md | missing — catalog defaults
 Install root: .skills/ | .agents/skills/ | …
 
 ## Hard gate
-1–9 pass/fail + evidence
+1–10 pass/fail + evidence
+
+## Visual
+Screenshot paths (375 / 1280 per changed page): …
+60-30-10 estimate: …
+Glyph / paint issues (if any): …
 
 ## Domain skills
 skill | pass/fail/n/a | evidence or reason
@@ -99,5 +110,5 @@ skill | pass/fail/n/a | evidence or reason
 …
 
 ## Unproven
-… (e.g. focus trap — no browser)
+… (e.g. focus trap — no browser; gate 10 — no screenshot)
 ```

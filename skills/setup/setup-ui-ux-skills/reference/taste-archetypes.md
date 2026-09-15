@@ -39,7 +39,7 @@ A name earns a first-class heading only if it differs from every existing profil
 ## Notion
 
 - **Density:** Balanced-to-generous. Comfortable block spacing on a page canvas; sidebar can be tighter.
-- **Borders:** Rare. Soft paper canvas; hairline dividers only when a list needs them. Elevation by background shift, not shadow.
+- **Borders:** Rare on decorative cards. Notion paper uses hairlines on lists and a quiet L1 for tables. It does not mean “spreadsheet text on a blank page.” Elevation by background shift, not shadow.
 - **Color:** Warm stone / off-white paper. Soft gray body text. One muted accent. No rainbow, no glass.
 - **Typography:** Editorial hierarchy. Large page title, calm body, few weights. Not Stripe tabular-admin.
 - **Motion:** 150–200ms; opacity + small translate (same restraint as Stripe).

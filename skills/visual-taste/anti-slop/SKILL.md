@@ -21,6 +21,7 @@ AI-generated and template-driven UI converges on the same clichés: rainbow butt
 - **No generic cartoon vector people** (waving, high-fiving, empty-box mascots) in empty states. Use text, actionable CTAs, simple monochrome icons, or product-relevant screenshots — not stock illustration people.
 - **No icons inside inputs unless functional.** Allowed: search magnifier, clear/reset control, password visibility toggle. Banned: decorative leading icons on every text field, emoji-style adorners, brand icons inside standard inputs.
 - **No unnecessary pill containers around standard text metadata.** Timestamps, author names, file sizes, and tags render as plain text or minimal chips only when they are interactive filters. Do not wrap static metadata in rounded pastel pills for decoration.
+- **Anti-slop deletes decoration, not structure.** Remove pills, glass, cartoons, and decorative chrome. Do **not** delete the list frame, row dividers, or search chrome. An empty-looking table after a slop pass is a **fail**, not a pass.
 
 ### Design Heuristics & Taste Principles
 
@@ -84,4 +85,5 @@ Use [reference/slop-checklist.md](reference/slop-checklist.md) for the full iden
 - [ ] Scan empty states — no cartoon people illustrations.
 - [ ] Scan inputs — icons only where functional (search, clear, toggle).
 - [ ] Scan metadata — no decorative pill wrappers on static text.
+- [ ] After a slop pass: list frame, row dividers, and search chrome still present — an empty-looking table is a fail.
 - [ ] Run slop checklist matrix on any AI-generated or imported component.

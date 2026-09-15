@@ -19,13 +19,14 @@ Labels identify fields; placeholders hint at format. Placeholders disappear on f
 - **Placeholders NEVER substitute for labels.** Every input must have a persistent visible label.
 - **Placeholders only for formatting examples:** e.g., `acme-corp`, `MM/YY`, `name@company.com` — not "Email address" or "Enter your name."
 - **Every form input has an associated visible label** programmatically bound to the control (`<label for>` + `id`, or `aria-labelledby` with visible text).
+- **Search: `aria-label` without a visible label is allowed only on narrow toolbars** (viewports Narrow / 375). On medium and wide, Search has a visible label or equivalent persistent text (visible “Search” or a search icon + visible name). Aria-label-only on a 1280px page is a fail.
 
 ### Design Heuristics & Taste Principles
 
 - Put enduring instructions in helper text below the label, not in the placeholder.
 - Labels use nouns or short noun phrases: Email, Company name, Expiry date — not "What's your email?"
 - Placeholder contrast must still meet accessibility targets from `.ux-profile.md`; if contrast is weak, drop the placeholder and rely on helper text.
-- Search fields may use a visible label (Search) or an accessible name via `aria-label` when space is constrained — but never placeholder-only.
+- On Narrow / 375, Search may use `aria-label` (or icon + accessible name) without a visible “Search” label — never placeholder-only. On medium/wide, follow the hard rule above.
 - Floating-label patterns are allowed only if the label remains visible after focus (does not rely on placeholder-as-label).
 
 See [reference/placeholder-rules.md](reference/placeholder-rules.md) for accessible bindings and helper text placement.
@@ -75,6 +76,7 @@ Audit: flag any `<input>`, `<select>`, or `<textarea>` without a visible associa
 - [ ] Read `.ux-profile.md` if present (a11y target).
 - [ ] Inventory all form controls in scope.
 - [ ] Confirm each has a visible, associated label.
+- [ ] On medium/wide: Search has a visible label or icon + visible name (aria-label-only only on Narrow / 375).
 - [ ] Rewrite placeholders that duplicate or replace labels.
 - [ ] Move lasting guidance to helper text per [reference/placeholder-rules.md](reference/placeholder-rules.md).
 - [ ] Verify programmatic association (`for`/`id`, `aria-labelledby`, or documented pattern).

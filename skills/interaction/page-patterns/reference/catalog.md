@@ -26,13 +26,14 @@ Pagination (always, even on one page)
 
 **Must**
 
-- Search is always present. `/` focuses it.
+- Search is always present. `/` focuses it. Search is recognizable at a glance: visible Search label **or** a search icon + visible name. `aria-label` alone is allowed only on the catalog **Narrow** line (375). At 1280 (medium/wide), aria-label-only is a fail.
 - One Filters control. All dimensions live in that panel. Active values appear as chips under the toolbar. Never a stack of filter dropdowns in the toolbar.
 - Create stays in the header, not the toolbar.
 - Export sits in the toolbar, not the header.
-- Pagination always renders.
+- The table/list sits in a visible **frame** (L1 surface + hairlines). Empty states stay *inside* that frame.
+- Pagination always renders. Disabled pagination buttons keep readable labels (no empty outline circles).
 - Default sort is on when the table first appears.
-- Row click → Detail. First-use empty uses `empty-states` inside the table frame.
+- Row click → Detail. Clickable rows have a resting affordance (link-colored primary cell, chevron, or a row hit target that reads as a row). `cursor-pointer` alone is not enough. First-use empty uses `empty-states` inside the table frame.
 
 **Must not**
 
@@ -40,8 +41,10 @@ Pagination (always, even on one page)
 - KPI tiles above a list “to make it feel like a dashboard”
 - Card grids as the default index (use a table unless the domain is visual-first media)
 - A filter with no matching visible column
+- Spreadsheet text on blank L0 canvas with no table frame
+- Search that is only an empty bar + `aria-label` (or kbd hint) on a wide page
 
-**Narrow:** Toolbar wraps. Table may scroll inside its region (sticky first column optional). Never shrink cells below 12px.
+**Narrow:** Toolbar wraps. Table may scroll inside its region (sticky first column optional). Never shrink cells below 12px. On Narrow / 375 only, Search may use `aria-label` without a visible label.
 
 ---
 

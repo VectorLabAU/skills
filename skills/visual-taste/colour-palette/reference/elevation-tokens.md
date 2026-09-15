@@ -7,11 +7,15 @@ Surfaces stack from canvas (L0) to overlay (L3). Depth is communicated by border
 | Level | Role | Typical elements | Background rule | Border | Shadow (light) |
 |-------|------|------------------|-----------------|--------|----------------|
 | **L0** | Canvas | Page background, main app shell | Dominant neutral — **~60%** of visible area | None | None |
-| **L1** | Structural | Cards, sidebars, table containers, inset panels | One step above L0 — **~30%** combined | `1px` at 6–10% fg alpha | Optional: `0 1px 2px rgba(0,0,0,0.04)` |
+| **L1** | Structural | Cards, sidebars, **lists, tables, boards**, inset panels | One step above L0 — **~30%** combined | `1px` at 6–10% fg alpha | Optional: `0 1px 2px rgba(0,0,0,0.04)` |
 | **L2** | Floating | Dropdowns, popovers, sticky subheaders | One step above L1 | `1px` at 8–12% fg alpha | `0 4px 12px rgba(0,0,0,0.06)` max |
 | **L3** | Overlay | Modals, command palette, slide-overs | Highest surface; scrim behind | `1px` at 10–14% fg alpha | `0 8px 24px rgba(0,0,0,0.08)` ceiling |
 
 **Rule:** Shadow alpha on L1–L3 must stay **< 0.08** in light mode. If shadow reads as a "sticker," reduce alpha or remove shadow and rely on border.
+
+**List / table / board:** Always L1. Require a 1px subtle border, **or** a one-step background shift **and** hairline row/column dividers. Table or list text sitting on L0 with no border and no hairlines is a **fail**.
+
+**Paper / “borders rare” profiles:** Rare decorative card chrome is fine. Lists still need hairlines and a quiet L1. Do not treat “borders rare” as no table frame.
 
 ## 60-30-10 color budget
 
@@ -21,7 +25,7 @@ Surfaces stack from canvas (L0) to overlay (L3). Depth is communicated by border
 | **30% — Structural** | L1 surfaces, chrome, nav backgrounds | Neutral steps; no accent fill |
 | **10% — Accent** | Primary buttons, active states, key links, focus rings | Single accent hue family |
 
-Measure on a representative screenshot: sample major regions or estimate by layout (full-width sidebar ≈ 20–30% structural).
+Measure on a representative **screenshot**: sample major regions from the image (full-width sidebar ≈ 20–30% structural). Do not score from token counts or “accent is on the CTA.” Fail if structural area is ~0%.
 
 ## Z-index stack
 
@@ -81,5 +85,6 @@ Does it sit on the page canvas?
 
 1. Inspect each elevated element — border defined before shadow?
 2. Compute shadow color alpha in DevTools — under 0.08 (light)?
-3. Count accent-hued background areas — near 10% of viewport?
-4. Dark mode — inset highlight present, no sticker shadow?
+3. From a screenshot, estimate 60/30/10 — fail if structural area is ~0%; accent near 10% of viewport?
+4. List / table / board — L1 frame or bg-shift + hairlines (not bare L0 text)?
+5. Dark mode — inset highlight present, no sticker shadow?

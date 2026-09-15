@@ -23,7 +23,8 @@ A page that mixes list, dashboard, and settings into one scroll is hard to use a
 - **App chrome is not a page.** Sidebars, headers, footers, and dropdowns frame pages. Do not treat a shell as the pattern.
 - **Components sit inside a pattern.** Charts, KPI tiles, dialogs, file upload, and empty states never replace the page type.
 - **View modes are not new pages.** List ↔ Board ↔ Calendar of the **same** records is one page with a toggle. Shared search and filters stay put.
-- **Empty states keep the pattern’s skeleton.** A calendar still shows the grid. A list still shows the header, search, and table frame. Do not swap the page for a blank illustration.
+- **Empty states keep the pattern’s skeleton.** A calendar still shows the grid. A list still shows the header, search, and a **visible** table frame (L1 surface + hairlines — not a bare DOM wrapper on L0). Do not swap the page for a blank illustration.
+- **Catalog Must lines are hard rules.** For List / Index: the table sits in a visible L1 frame with hairlines; search is recognizable at a glance on medium/wide; clickable rows have a resting affordance; disabled pagination keeps readable labels. Restraint never drops that chrome.
 
 See [reference/decision-tree.md](reference/decision-tree.md) to pick the pattern. See [reference/catalog.md](reference/catalog.md) only for the pattern you named.
 
@@ -83,6 +84,7 @@ Width-cap and center **main page content** (`main`, `.page`) so it does not hug 
 - [ ] Walk [reference/decision-tree.md](reference/decision-tree.md) and **state the pattern name** (or marketing route type) in chat.
 - [ ] Read only that pattern in [reference/catalog.md](reference/catalog.md) (or [reference/marketing.md](reference/marketing.md)).
 - [ ] Build the named anatomy — do not add KPI strips to lists, filters to dashboards, or DataTable chrome to inboxes.
-- [ ] Empty, loading, and error states stay inside the pattern frame.
+- [ ] Empty, loading, and error states stay inside the pattern frame (visible L1 + hairlines for lists — not bare L0).
+- [ ] List / Index: search recognizable on medium/wide; rows have resting affordance; disabled pagination stays labeled.
 - [ ] Apply that pattern’s **Narrow** line; chrome collapse is `viewports`.
 - [ ] After build: a reviewer can name the same pattern from the layout alone.
