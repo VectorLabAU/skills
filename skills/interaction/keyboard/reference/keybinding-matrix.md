@@ -89,6 +89,8 @@ Selected tab: `tabindex="0"`, `aria-selected="true"`.
 
 Show shortcuts in tooltips as platform-aware text: `⌘K` on Mac, `Ctrl+K` on others. Detect via `navigator.platform` or `userAgentData` at runtime.
 
+For **icon buttons**, the tooltip is mandatory (not `title`). Prefer the project’s **Kbd** component inside the tooltip; if none exists, append the platform-aware shortcut as label text. Full contract: `icon-buttons` skill and its [icon-button-contract](../../icon-buttons/reference/icon-button-contract.md).
+
 ## Testing checklist
 
 - [ ] Full task completable without mouse

@@ -41,6 +41,8 @@ Icon-only controls (no visible text) or spatially compact toolbars — still not
 
 Search still needs an accessible name; placeholder alone is insufficient.
 
+Icon-only **buttons** also need a real tooltip (hover + focus) per the `icon-buttons` skill — `aria-label` alone is not enough, and `title` is not a tooltip.
+
 ## Placeholder: allowed vs forbidden
 
 | Allowed (format example) | Forbidden (label substitute) |

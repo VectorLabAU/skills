@@ -107,6 +107,7 @@ Rich descriptions so the agent can reach for them when the task fits.
 - [surfaces](./skills/interaction/surfaces/SKILL.md) — slide-over vs page vs inline; destructive confirm
 - [forms](./skills/interaction/forms/SKILL.md) — blur validation, clickable submit
 - [keyboard](./skills/interaction/keyboard/SKILL.md) — full keyboard paths, focus rings, traps
+- [icon-buttons](./skills/interaction/icon-buttons/SKILL.md) — square icon chrome with required tooltips and shortcut kbd
 - [defaults](./skills/interaction/defaults/SKILL.md) — defaults and draft persistence
 
 **Voice**
