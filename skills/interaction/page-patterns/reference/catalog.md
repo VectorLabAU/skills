@@ -29,7 +29,7 @@ Pagination (always, even on one page)
 - Search is always present. `/` focuses it. Search is recognizable at a glance: visible Search label **or** a search icon + visible name. `aria-label` alone is allowed only on the catalog **Narrow** line (375). At 1280 (medium/wide), aria-label-only is a fail.
 - One Filters control. All dimensions live in that panel. Active values appear as chips under the toolbar. Never a stack of filter dropdowns in the toolbar.
 - Create stays in the header, not the toolbar.
-- Export sits in the toolbar, not the header.
+- Export sits in the toolbar, not the header. Export and view toggles (board/list) may be square icon buttons; follow `icon-buttons` (tooltip + shortcut kbd).
 - The table/list sits in a visible **frame** (L1 surface + hairlines). Empty states stay *inside* that frame.
 - Pagination always renders. Disabled pagination buttons keep readable labels (no empty outline circles).
 - Default sort is on when the table first appears.
